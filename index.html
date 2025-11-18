@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopta una Mascota</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>🐾 Sistema de Adopción de Mascotas</h1>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <!-- Sección de Filtros -->
+        <div class="filters-section">
+            <h2>Encuentra tu compañero ideal</h2>
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="searchName">Buscar por nombre:</label>
+                    <input type="text" id="searchName" placeholder="Nombre de la mascota...">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortName">Ordenar por nombre:</label>
+                    <select id="sortName">
+                        <option value="">Sin ordenar</option>
+                        <option value="asc">A - Z</option>
+                        <option value="desc">Z - A</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortDate">Ordenar por fecha:</label>
+                    <select id="sortDate">
+                        <option value="">Sin ordenar</option>
+                        <option value="newest">Más recientes</option>
+                        <option value="oldest">Más antiguos</option>
+                    </select>
+                </div>
+
+                <button class="btn-search" id="btnSearch">Buscar</button>
+            </div>
+        </div>
+
+        <!-- Grid de Mascotas -->
+        <div id="petsContainer" class="pets-grid"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
