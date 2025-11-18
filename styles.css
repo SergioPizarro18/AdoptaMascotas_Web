@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FAFAF5;
+    color: #264653;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2A9D8F;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Sección de filtros */
+.filters-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #264653;
+}
+
+.filters-section h2 {
+    color: #264653;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: #264653;
+    font-size: 0.9rem;
+}
+
+select, input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #264653;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #FAFAF5;
+    color: #264653;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:hover, input:hover {
+    border-color: #FF9F66;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #FF9F66;
+    box-shadow: 0 0 0 3px rgba(255, 159, 102, 0.1);
+}
+
+/* Botón de búsqueda */
+.btn-search {
+    padding: 0.75rem 2rem;
+    background-color: #FF9F66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-end;
+}
+
+.btn-search:hover {
+    background-color: #ff8c4d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 159, 102, 0.3);
+}
+
+/* Grid de mascotas */
+.pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Card de mascota */
+.pet-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.pet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-color: #FF9F66;
+}
+
+.pet-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: #E9C46A;
+}
+
+.pet-info {
+    padding: 1.5rem;
+}
+
+.pet-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #264653;
+    margin-bottom: 0.5rem;
+}
+
+.pet-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.pet-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #264653;
+}
+
+.pet-detail span {
+    font-weight: 600;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-available {
+    background-color: #2A9D8F;
+    color: white;
+}
+
+.badge-urgent {
+    background-color: #E9C46A;
+    color: #264653;
+}
+
+.btn-adopt {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: #FF9F66;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-adopt:hover {
+    background-color: #ff8c4d;
+    transform: scale(1.02);
+}
+
+/* Mensaje cuando no hay resultados */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #264653;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #2A9D8F;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-search {
+        align-self: stretch;
+    }
+
+    .pets-grid {
+        grid-template-columns: 1fr;
+    }
+}
