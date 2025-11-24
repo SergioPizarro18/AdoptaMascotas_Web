@@ -125,7 +125,7 @@ let pets = [
 let filteredPets = [...pets];
 let currentTypeFilter = 'all';
 
-// Función para mostrar alerta cuando no se encuentra mascota
+// Función para mostrar alerta cuando no se encuentra mascot
 function showAlert() {
     const overlay = document.createElement('div');
     overlay.className = 'alert-overlay';
