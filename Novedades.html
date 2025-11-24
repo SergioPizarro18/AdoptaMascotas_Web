@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novedades - Adopta una Mascota</title>
+    <link rel="stylesheet" href="/Css/novedades.css" >
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>🐾 Novedades del Refugio</h1>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <h2>Últimas Historias, Eventos y Rescates</h2>
+        <p>Descubre lo más reciente que sucede en nuestra comunidad animal 💛</p>
+
+        <!-- Grid de Novedades -->
+        <div id="newsContainer" class="novedades-grid"></div>
+    </div>
+
+    <!-- Modal de Detalles -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <img id="modalImage" src="" alt="Noticia" class="modal-img">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalDescription"></p>
+            <button id="modalCTA" class="cta-btn hidden"></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/Js/novedades.js"></script>
+</body>
+</html>
