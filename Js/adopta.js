@@ -4,8 +4,9 @@ let pets = [
         id: 1,
         name: "Max",
         type: "Perro",
+        sex: "Macho",
         age: "2 años",
-        arrivalDate: new Date("2024-10-15"),
+        ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -13,8 +14,9 @@ let pets = [
         id: 2,
         name: "Luna",
         type: "Gato",
+        sex: "Hembra",
         age: "1 año",
-        arrivalDate: new Date("2024-11-01"),
+        ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -22,8 +24,9 @@ let pets = [
         id: 3,
         name: "Rocky",
         type: "Perro",
+        sex: "Macho",
         age: "3 años",
-        arrivalDate: new Date("2024-09-20"),
+        ageCategory: "adulto",
         image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -31,8 +34,9 @@ let pets = [
         id: 4,
         name: "Bella",
         type: "Gato",
+        sex: "Hembra",
         age: "6 meses",
-        arrivalDate: new Date("2024-11-10"),
+        ageCategory: "cachorro",
         image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -40,8 +44,9 @@ let pets = [
         id: 5,
         name: "Charlie",
         type: "Perro",
+        sex: "Macho",
         age: "4 años",
-        arrivalDate: new Date("2024-08-05"),
+        ageCategory: "adulto",
         image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -49,8 +54,9 @@ let pets = [
         id: 6,
         name: "Mimi",
         type: "Gato",
+        sex: "Hembra",
         age: "2 años",
-        arrivalDate: new Date("2024-10-28"),
+        ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -58,8 +64,9 @@ let pets = [
         id: 7,
         name: "Thor",
         type: "Perro",
+        sex: "Macho",
         age: "5 años",
-        arrivalDate: new Date("2024-09-15"),
+        ageCategory: "adulto",
         image: "https://images.unsplash.com/photo-1568572933382-74d440642117?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -67,17 +74,19 @@ let pets = [
         id: 8,
         name: "Nala",
         type: "Gato",
+        sex: "Hembra",
         age: "3 años",
-        arrivalDate: new Date("2024-10-20"),
-        image: "https://w0.peakpx.com/wallpaper/93/24/HD-wallpaper-gat-feles-cat-gato-gatito.jpg",
+        ageCategory: "adulto",
+        image: "https://static.wixstatic.com/media/8af33b_047145a7c3644f89acfb223379601813~mv2.jpeg/v1/fill/w_228,h_228,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8af33b_047145a7c3644f89acfb223379601813~mv2.jpeg",
         urgent: false
     },
     {
         id: 9,
         name: "Bruno",
         type: "Perro",
+        sex: "Macho",
         age: "1 año",
-        arrivalDate: new Date("2024-11-15"),
+        ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -85,8 +94,9 @@ let pets = [
         id: 10,
         name: "Pelusa",
         type: "Gato",
+        sex: "Hembra",
         age: "4 meses",
-        arrivalDate: new Date("2024-11-20"),
+        ageCategory: "cachorro",
         image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -94,8 +104,9 @@ let pets = [
         id: 11,
         name: "Toby",
         type: "Perro",
+        sex: "Macho",
         age: "6 años",
-        arrivalDate: new Date("2024-08-30"),
+        ageCategory: "adulto",
         image: "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -103,8 +114,9 @@ let pets = [
         id: 12,
         name: "Simba",
         type: "Gato",
-        age: "2 años",
-        arrivalDate: new Date("2024-09-10"),
+        sex: "Macho",
+        age: "8 años",
+        ageCategory: "senior",
         image: "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&h=400&fit=crop",
         urgent: false
     }
@@ -122,23 +134,7 @@ function showAlert() {
         <div class="alert-box">
             <h3>🐾 Oops...</h3>
             <p>No encontramos esa mascota, pero hay muchos otros peluditos esperándote.</p>
-            <button onclick="closeAlert()">Entendido</button>
-        </div>
-    `;
-    
-    document.body.appendChild(overlay);
-}
-
-// Función para mostrar alerta cuando el campo está vacío
-function showEmptySearchAlert() {
-    const overlay = document.createElement('div');
-    overlay.className = 'alert-overlay';
-    
-    overlay.innerHTML = `
-        <div class="alert-box">
-            <h3>🔍 ¡Espera!</h3>
-            <p>Por favor, escribe el nombre de la mascota que buscas.</p>
-            <button onclick="closeAlert()">Entendido</button>
+            <button onclick="closeAlert()">Ver todas las mascotas</button>
         </div>
     `;
     
@@ -151,8 +147,6 @@ function closeAlert() {
     if (overlay) {
         overlay.remove();
     }
-    // Limpiar el input de búsqueda
-    document.getElementById('searchName').value = '';
 }
 
 // Función para formatear fecha
@@ -176,13 +170,10 @@ function renderPets(petsToRender) {
                 <h3 class="pet-name">${pet.name}</h3>
                 <div class="pet-details">
                     <div class="pet-detail">
-                        <span>Tipo:</span> ${pet.type}
+                        <span>Sexo:</span> ${pet.sex}
                     </div>
                     <div class="pet-detail">
                         <span>Edad:</span> ${pet.age}
-                    </div>
-                    <div class="pet-detail">
-                        <span>Llegada:</span> ${formatDate(pet.arrivalDate)}
                     </div>
                 </div>
                 <div>
@@ -202,40 +193,26 @@ function filterByType(type) {
 }
 
 // Función para aplicar filtros
-function applyFilters(fromButton = false) {
-    const searchName = document.getElementById('searchName').value.toLowerCase().trim();
+function applyFilters() {
+    const filterSex = document.getElementById('filterSex').value;
+    const filterAge = document.getElementById('filterAge').value;
     const sortName = document.getElementById('sortName').value;
-    const sortDate = document.getElementById('sortDate').value;
 
-    // Validar que haya algo en el input cuando se presiona el botón Buscar
-    if (fromButton && searchName === '') {
-        showEmptySearchAlert();
-        return;
-    }
-
-    // Filtrar por tipo
+    // Filtrar por tipo (desde el dropdown del header)
     if (currentTypeFilter === 'all') {
         filteredPets = [...pets];
     } else {
         filteredPets = pets.filter(pet => pet.type === currentTypeFilter);
     }
 
-    // Filtrar por nombre si hay texto en el input
-    if (searchName !== '') {
-        filteredPets = filteredPets.filter(pet => 
-            pet.name.toLowerCase() === searchName
-        );
-        
-        // Si no se encontró ninguna mascota con ese nombre, mostrar alerta y mantener todas
-        if (filteredPets.length === 0) {
-            showAlert();
-            // Restaurar todas las mascotas según el filtro de tipo
-            if (currentTypeFilter === 'all') {
-                filteredPets = [...pets];
-            } else {
-                filteredPets = pets.filter(pet => pet.type === currentTypeFilter);
-            }
-        }
+    // Filtrar por sexo
+    if (filterSex !== '') {
+        filteredPets = filteredPets.filter(pet => pet.sex === filterSex);
+    }
+
+    // Filtrar por edad
+    if (filterAge !== '') {
+        filteredPets = filteredPets.filter(pet => pet.ageCategory === filterAge);
     }
 
     // Ordenar por nombre
@@ -243,13 +220,6 @@ function applyFilters(fromButton = false) {
         filteredPets.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortName === 'desc') {
         filteredPets.sort((a, b) => b.name.localeCompare(a.name));
-    }
-
-    // Ordenar por fecha
-    if (sortDate === 'newest') {
-        filteredPets.sort((a, b) => b.arrivalDate - a.arrivalDate);
-    } else if (sortDate === 'oldest') {
-        filteredPets.sort((a, b) => a.arrivalDate - b.arrivalDate);
     }
 
     renderPets(filteredPets);
@@ -262,16 +232,9 @@ function adoptPet(petId) {
 }
 
 // Event Listeners
-document.getElementById('sortName').addEventListener('change', () => applyFilters(false));
-document.getElementById('sortDate').addEventListener('change', () => applyFilters(false));
-document.getElementById('btnSearch').addEventListener('click', () => applyFilters(true));
-
-// También permitir buscar con Enter
-document.getElementById('searchName').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        applyFilters(true);
-    }
-});
+document.getElementById('filterSex').addEventListener('change', applyFilters);
+document.getElementById('filterAge').addEventListener('change', applyFilters);
+document.getElementById('sortName').addEventListener('change', applyFilters);
 
 // Renderizar mascotas inicialmente al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
