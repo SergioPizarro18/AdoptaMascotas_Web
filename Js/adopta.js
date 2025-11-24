@@ -53,23 +53,91 @@ let pets = [
         arrivalDate: new Date("2024-10-28"),
         image: "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=400&h=400&fit=crop",
         urgent: true
+    },
+    {
+        id: 7,
+        name: "Thor",
+        type: "Perro",
+        age: "5 años",
+        arrivalDate: new Date("2024-09-15"),
+        image: "https://images.unsplash.com/photo-1568572933382-74d440642117?w=400&h=400&fit=crop",
+        urgent: false
+    },
+    {
+        id: 8,
+        name: "Nala",
+        type: "Gato",
+        age: "3 años",
+        arrivalDate: new Date("2024-10-20"),
+        image: "https://w0.peakpx.com/wallpaper/93/24/HD-wallpaper-gat-feles-cat-gato-gatito.jpg",
+        urgent: false
+    },
+    {
+        id: 9,
+        name: "Bruno",
+        type: "Perro",
+        age: "1 año",
+        arrivalDate: new Date("2024-11-15"),
+        image: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400&h=400&fit=crop",
+        urgent: true
+    },
+    {
+        id: 10,
+        name: "Pelusa",
+        type: "Gato",
+        age: "4 meses",
+        arrivalDate: new Date("2024-11-20"),
+        image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=400&fit=crop",
+        urgent: true
+    },
+    {
+        id: 11,
+        name: "Toby",
+        type: "Perro",
+        age: "6 años",
+        arrivalDate: new Date("2024-08-30"),
+        image: "https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=400&h=400&fit=crop",
+        urgent: false
+    },
+    {
+        id: 12,
+        name: "Simba",
+        type: "Gato",
+        age: "2 años",
+        arrivalDate: new Date("2024-09-10"),
+        image: "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&h=400&fit=crop",
+        urgent: false
     }
 ];
 
 let filteredPets = [...pets];
 let currentTypeFilter = 'all';
 
-// Función para mostrar alerta central
-function showAlert(message) {
-    // Crear overlay
+// Función para mostrar alerta cuando no se encuentra mascota
+function showAlert() {
     const overlay = document.createElement('div');
     overlay.className = 'alert-overlay';
     
-    // Crear caja de alerta
     overlay.innerHTML = `
         <div class="alert-box">
             <h3>🐾 Oops...</h3>
-            <p>No encontramos esa mascota, pero hay muchos otros peluditos esperándote!!</p>
+            <p>No encontramos esa mascota, pero hay muchos otros peluditos esperándote.</p>
+            <button onclick="closeAlert()">Entendido</button>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+}
+
+// Función para mostrar alerta cuando el campo está vacío
+function showEmptySearchAlert() {
+    const overlay = document.createElement('div');
+    overlay.className = 'alert-overlay';
+    
+    overlay.innerHTML = `
+        <div class="alert-box">
+            <h3>🔍 ¡Espera!</h3>
+            <p>Por favor, escribe el nombre de la mascota que buscas.</p>
             <button onclick="closeAlert()">Entendido</button>
         </div>
     `;
@@ -134,10 +202,16 @@ function filterByType(type) {
 }
 
 // Función para aplicar filtros
-function applyFilters() {
+function applyFilters(fromButton = false) {
     const searchName = document.getElementById('searchName').value.toLowerCase().trim();
     const sortName = document.getElementById('sortName').value;
     const sortDate = document.getElementById('sortDate').value;
+
+    // Validar que haya algo en el input cuando se presiona el botón Buscar
+    if (fromButton && searchName === '') {
+        showEmptySearchAlert();
+        return;
+    }
 
     // Filtrar por tipo
     if (currentTypeFilter === 'all') {
@@ -148,14 +222,13 @@ function applyFilters() {
 
     // Filtrar por nombre si hay texto en el input
     if (searchName !== '') {
-        const beforeFilter = filteredPets.length;
         filteredPets = filteredPets.filter(pet => 
-            pet.name.toLowerCase().includes(searchName)
+            pet.name.toLowerCase() === searchName
         );
         
         // Si no se encontró ninguna mascota con ese nombre, mostrar alerta y mantener todas
         if (filteredPets.length === 0) {
-            showAlert('No se encontró la mascota buscada');
+            showAlert();
             // Restaurar todas las mascotas según el filtro de tipo
             if (currentTypeFilter === 'all') {
                 filteredPets = [...pets];
@@ -189,14 +262,14 @@ function adoptPet(petId) {
 }
 
 // Event Listeners
-document.getElementById('sortName').addEventListener('change', applyFilters);
-document.getElementById('sortDate').addEventListener('change', applyFilters);
-document.getElementById('btnSearch').addEventListener('click', applyFilters);
+document.getElementById('sortName').addEventListener('change', () => applyFilters(false));
+document.getElementById('sortDate').addEventListener('change', () => applyFilters(false));
+document.getElementById('btnSearch').addEventListener('click', () => applyFilters(true));
 
 // También permitir buscar con Enter
 document.getElementById('searchName').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-        applyFilters();
+        applyFilters(true);
     }
 });
 
