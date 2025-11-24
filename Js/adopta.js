@@ -57,6 +57,35 @@ let pets = [
 ];
 
 let filteredPets = [...pets];
+let currentTypeFilter = 'all';
+
+// Función para mostrar alerta central
+function showAlert(message) {
+    // Crear overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'alert-overlay';
+    
+    // Crear caja de alerta
+    overlay.innerHTML = `
+        <div class="alert-box">
+            <h3>🐾 Oops...</h3>
+            <p>No encontramos esa mascota, pero hay muchos otros peluditos esperándote!!</p>
+            <button onclick="closeAlert()">Entendido</button>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+}
+
+// Función para cerrar alerta
+function closeAlert() {
+    const overlay = document.querySelector('.alert-overlay');
+    if (overlay) {
+        overlay.remove();
+    }
+    // Limpiar el input de búsqueda
+    document.getElementById('searchName').value = '';
+}
 
 // Función para formatear fecha
 function formatDate(date) {
@@ -98,16 +127,43 @@ function renderPets(petsToRender) {
     `).join('');
 }
 
+// Función para filtrar por tipo de mascota
+function filterByType(type) {
+    currentTypeFilter = type;
+    applyFilters();
+}
+
 // Función para aplicar filtros
 function applyFilters() {
-    const searchName = document.getElementById('searchName').value.toLowerCase();
+    const searchName = document.getElementById('searchName').value.toLowerCase().trim();
     const sortName = document.getElementById('sortName').value;
     const sortDate = document.getElementById('sortDate').value;
 
-    // Filtrar por nombre
-    filteredPets = pets.filter(pet => 
-        pet.name.toLowerCase().includes(searchName)
-    );
+    // Filtrar por tipo
+    if (currentTypeFilter === 'all') {
+        filteredPets = [...pets];
+    } else {
+        filteredPets = pets.filter(pet => pet.type === currentTypeFilter);
+    }
+
+    // Filtrar por nombre si hay texto en el input
+    if (searchName !== '') {
+        const beforeFilter = filteredPets.length;
+        filteredPets = filteredPets.filter(pet => 
+            pet.name.toLowerCase().includes(searchName)
+        );
+        
+        // Si no se encontró ninguna mascota con ese nombre, mostrar alerta y mantener todas
+        if (filteredPets.length === 0) {
+            showAlert('No se encontró la mascota buscada');
+            // Restaurar todas las mascotas según el filtro de tipo
+            if (currentTypeFilter === 'all') {
+                filteredPets = [...pets];
+            } else {
+                filteredPets = pets.filter(pet => pet.type === currentTypeFilter);
+            }
+        }
+    }
 
     // Ordenar por nombre
     if (sortName === 'asc') {
@@ -133,10 +189,16 @@ function adoptPet(petId) {
 }
 
 // Event Listeners
-document.getElementById('searchName').addEventListener('input', applyFilters);
 document.getElementById('sortName').addEventListener('change', applyFilters);
 document.getElementById('sortDate').addEventListener('change', applyFilters);
 document.getElementById('btnSearch').addEventListener('click', applyFilters);
+
+// También permitir buscar con Enter
+document.getElementById('searchName').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        applyFilters();
+    }
+});
 
 // Renderizar mascotas inicialmente al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
