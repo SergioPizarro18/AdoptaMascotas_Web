@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayúdanos - Adopta una Mascota</title>
+    <link rel="stylesheet" href="/Css/ayudanos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            <span>WUF</span>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="/Adopta.html">Adopta ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">🐕 Perritos</a></li>
+                        <li><a href="#">🐱 Gatitos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="active">Ayúdanos</a></li>
+                <li><a href="#">Consultas</a></li>
+                <li><a href="#">Novedades</a></li>
+                <li><a href="/Nosotros.html">Nosotros</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-buttons">
+            <button class="btn-help">❤️ AYUDA AQUÍ</button>
+            <button class="btn-login">👤 Iniciar sesión</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">🐾 Planes de Ayuda 🐾</h1>
+        <p class="hero-subtitle">
+            <strong>Apadrinar</strong> nunca fue tan fácil, ¡afíliate desde <strong>S/ 9.90</strong> y ayuda a los más de <strong>750 perros</strong> de albergues afiliados! Además, accedes a <strong>descuentos exclusivos</strong> para ti y tu mascota, míralos <strong>aquí</strong>.
+        </p>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <h2 class="section-title">Beneficios de Colaborar</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">❤️</div>
+                <h3 class="benefit-title">Salva Vidas</h3>
+                <p class="benefit-description">
+                    Tu contribución ayuda a rescatar y cuidar a mascotas abandonadas, brindándoles una segunda oportunidad de encontrar un hogar amoroso.
+                </p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">👥</div>
+                <h3 class="benefit-title">Comunidad Comprometida</h3>
+                <p class="benefit-description">
+                    Únete a una comunidad de personas que comparten tu amor por los animales y trabajan juntas para hacer una diferencia real.
+                </p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🔍</div>
+                <h3 class="benefit-title">Transparencia Total</h3>
+                <p class="benefit-description">
+                    Recibe informes detallados sobre cómo se utiliza tu aporte y el impacto directo que genera en la vida de las mascotas.
+                </p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">📈</div>
+                <h3 class="benefit-title">Impacto Sostenible</h3>
+                <p class="benefit-description">
+                    Contribuye a crear un sistema sostenible que garantiza el bienestar continuo de los animales rescatados.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans-section">
+        <div class="plans-container">
+            <h2 class="section-title">Planes de Ayuda</h2>
+            <div class="plans-grid">
+                <!-- Plan Básico -->
+                <div class="plan-card">
+                    <div class="plan-image-container">
+                        <div class="plan-image-circle">
+                            <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=300&h=300&fit=crop" alt="Perrito Plan Básico" class="plan-image">
+                        </div>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="plan-name">PLAN BÁSICO</h3>
+                        <p class="plan-description">
+                            Representa 2kg de comida mensual o el equivalente en ayuda, campañas de salud y adopción.
+                        </p>
+                        <div class="plan-price">
+                            <span class="plan-price-currency">S/</span>
+                            <span>10</span>
+                            <span class="plan-price-period">/mes</span>
+                        </div>
+                        <button class="plan-button" onclick="selectPlan('Básico')">Seleccionar Plan</button>
+                    </div>
+                </div>
+
+                <!-- Plan Estándar -->
+                <div class="plan-card">
+                    <div class="plan-image-container">
+                        <div class="plan-image-circle">
+                            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=300&h=300&fit=crop" alt="Perrito Plan Estándar" class="plan-image">
+                        </div>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="plan-name">PLAN ESTÁNDAR</h3>
+                        <p class="plan-description">
+                            Representa 5kg de comida mensual o el equivalente en ayuda, campañas de salud y adopción.
+                        </p>
+                        <div class="plan-price">
+                            <span class="plan-price-currency">S/</span>
+                            <span>25</span>
+                            <span class="plan-price-period">/mes</span>
+                        </div>
+                        <button class="plan-button" onclick="selectPlan('Estándar')">Seleccionar Plan</button>
+                    </div>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="plan-card">
+                    <div class="plan-image-container">
+                        <div class="plan-image-circle">
+                            <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=300&h=300&fit=crop" alt="Perrito Plan Premium" class="plan-image">
+                        </div>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="plan-name">PLAN PREMIUM</h3>
+                        <p class="plan-description">
+                            Representa 10kg de comida mensual o el equivalente en ayuda, campañas de salud y adopción.
+                        </p>
+                        <div class="plan-price">
+                            <span class="plan-price-currency">S/</span>
+                            <span>50</span>
+                            <span class="plan-price-period">/mes</span>
+                        </div>
+                        <button class="plan-button" onclick="selectPlan('Premium')">Seleccionar Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/Js/ayudanos.js"></script>
+</body>
+</html>
