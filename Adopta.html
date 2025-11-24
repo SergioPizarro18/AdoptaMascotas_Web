@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopta una Mascota</title>
-    <link rel="stylesheet" href="/Css/adopta.css">
+    <link rel="stylesheet" href="Css/adopta.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <h1>🐾 Sistema de Adopción de Mascotas</h1>
-    </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            <span>WUF</span>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#" class="active">Adopta ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="filterByType('Perro'); return false;">🐕 Perritos</a></li>
+                        <li><a href="#" onclick="filterByType('Gato'); return false;">🐱 Gatitos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Ayúdanos</a></li>
+                <li><a href="#">Consultas</a></li>
+                <li><a href="#">Novedades</a></li>
+                <li><a href="#">Nosotros</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-buttons">
+            <button class="btn-help">❤️ AYUDA AQUÍ</button>
+            <button class="btn-login">👤 Iniciar sesión</button>
+        </div>
+    </header>
 
     <!-- Contenedor Principal -->
     <div class="container">
@@ -20,7 +44,10 @@
             <div class="filters">
                 <div class="filter-group">
                     <label for="searchName">Buscar por nombre:</label>
-                    <input type="text" id="searchName" placeholder="Nombre de la mascota...">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="searchName" placeholder="Nombre de la mascota...">
+                        <button class="btn-search" id="btnSearch">Buscar</button>
+                    </div>
                 </div>
                 
                 <div class="filter-group">
@@ -40,8 +67,6 @@
                         <option value="oldest">Más antiguos</option>
                     </select>
                 </div>
-
-                <button class="btn-search" id="btnSearch">Buscar</button>
             </div>
         </div>
 
@@ -54,6 +79,6 @@
         <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="/Js/adopta.js"></script>
+    <script src="Js/adopta.js"></script>
 </body>
 </html>
