@@ -19,8 +19,8 @@
                 <li class="dropdown">
                     <a href="#" class="active">Adopta ▼</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" onclick="filterByType('Perro'); return false;">🐕 Perritos</a></li>
-                        <li><a href="#" onclick="filterByType('Gato'); return false;">🐱 Gatitos</a></li>
+                        <li><a href="#" onclick="filterByType('Perro'); return false;">Perritos</a></li>
+                        <li><a href="#" onclick="filterByType('Gato'); return false;">Gatitos</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Ayúdanos</a></li>
@@ -43,28 +43,31 @@
             <h2>Encuentra tu compañero ideal</h2>
             <div class="filters">
                 <div class="filter-group">
-                    <label for="searchName">Buscar por nombre:</label>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <input type="text" id="searchName" placeholder="Nombre de la mascota...">
-                        <button class="btn-search" id="btnSearch">Buscar</button>
-                    </div>
+                    <label for="filterSex">Buscar por sexo:</label>
+                    <select id="filterSex">
+                        <option value="">Todos</option>
+                        <option value="Macho">Macho</option>
+                        <option value="Hembra">Hembra</option>
+                    </select>
                 </div>
                 
+                <div class="filter-group">
+                    <label for="filterAge">Buscar por edad:</label>
+                    <select id="filterAge">
+                        <option value="">Todas las edades</option>
+                        <option value="cachorro">Cachorro (0-1 año)</option>
+                        <option value="joven">Joven (1-3 años)</option>
+                        <option value="adulto">Adulto (3-7 años)</option>
+                        <option value="senior">Senior (7+ años)</option>
+                    </select>
+                </div>
+
                 <div class="filter-group">
                     <label for="sortName">Ordenar por nombre:</label>
                     <select id="sortName">
                         <option value="">Sin ordenar</option>
                         <option value="asc">A - Z</option>
                         <option value="desc">Z - A</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="sortDate">Ordenar por fecha:</label>
-                    <select id="sortDate">
-                        <option value="">Sin ordenar</option>
-                        <option value="newest">Más recientes</option>
-                        <option value="oldest">Más antiguos</option>
                     </select>
                 </div>
             </div>
