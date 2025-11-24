@@ -174,15 +174,18 @@ body {
 
 .filters {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
     align-items: flex-end;
+    justify-content: flex-start;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
 }
 
 .filter-group:nth-child(2) {
