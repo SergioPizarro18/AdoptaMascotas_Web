@@ -3,39 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novedades - Adopta una Mascota</title>
-    <link rel="stylesheet" href="/Css/novedades.css" >
+    <title>Blog - WUF</title>
+    <link rel="stylesheet" href="/Css/novedades.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <h1>🐾 Novedades del Refugio</h1>
-    </nav>
-
-    <!-- Contenedor Principal -->
-    <div class="container">
-        <h2>Últimas Historias, Eventos y Rescates</h2>
-        <p>Descubre lo más reciente que sucede en nuestra comunidad animal 💛</p>
-
-        <!-- Grid de Novedades -->
-        <div id="newsContainer" class="novedades-grid"></div>
-    </div>
-
-    <!-- Modal de Detalles -->
-    <div id="modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="closeModal" class="close-btn">&times;</span>
-            <img id="modalImage" src="" alt="Noticia" class="modal-img">
-            <h2 id="modalTitle"></h2>
-            <p id="modalDate"></p>
-            <p id="modalDescription"></p>
-            <button id="modalCTA" class="cta-btn hidden"></button>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            <span>WUF</span>
         </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">Adopta ▼</a></li>
+                <li><a href="#">Ayúdanos</a></li>
+                <li><a href="#">Consultas</a></li>
+                <li><a href="#" class="active">Novedades</a></li>
+                <li><a href="/Nosotros.html">Nosotros</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-buttons">
+            <button class="btn-help">❤️ AYUDA AQUÍ</button>
+            <button class="btn-login">👤 Iniciar sesión</button>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <h1>Novedades <span class="bone-icon">🦴</span></h1>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Sidebar Filter -->
+        <aside class="sidebar-filter">
+            <div class="filter-header">
+                <button class="filter-toggle" id="filterToggle">
+                    <span class="hamburger-icon">☰</span>
+                    <span class="filter-text">Filtros</span>
+                </button>
+            </div>
+            
+            <div class="filter-content" id="filterContent">
+                <h3 class="filter-title">Categorías</h3>
+                <div class="filter-options">
+                    <div class="filter-tag active" data-filter="all">
+                        <span class="filter-icon">📋</span>
+                        <span>Todos</span>
+                    </div>
+                    <div class="filter-tag" data-filter="adopcion">
+                        <span class="filter-icon">🏠</span>
+                        <span>Adopción</span>
+                    </div>
+                    <div class="filter-tag" data-filter="responsable">
+                        <span class="filter-icon">💚</span>
+                        <span>Tenencia Responsable</span>
+                    </div>
+                    <div class="filter-tag" data-filter="lifestyle">
+                        <span class="filter-icon">🎯</span>
+                        <span>Lifestyle</span>
+                    </div>
+                    <div class="filter-tag" data-filter="eventos">
+                        <span class="filter-icon">🎉</span>
+                        <span>Eventos</span>
+                    </div>
+                    <div class="filter-tag" data-filter="rescates">
+                        <span class="filter-icon">🆘</span>
+                        <span>Rescates</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- News Grid -->
+        <main class="news-section">
+            <div class="news-grid" id="newsGrid">
+                <!-- Las novedades se cargarán dinámicamente con JavaScript -->
+            </div>
+        </main>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+        <p>&copy; 2024 WUF - Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
     </footer>
 
     <script src="/Js/novedades.js"></script>
