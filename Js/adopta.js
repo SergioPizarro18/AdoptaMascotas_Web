@@ -2,7 +2,7 @@
 let pets = [
     {
         id: 1,
-        name: "Max",
+        name: "Prime",
         type: "Perro",
         sex: "Macho",
         age: "2 años",
@@ -15,7 +15,7 @@ let pets = [
         name: "Luna",
         type: "Gato",
         sex: "Hembra",
-        age: "1 año",
+        age: "2 año",
         ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop",
         urgent: true
@@ -37,7 +37,7 @@ let pets = [
         sex: "Hembra",
         age: "6 meses",
         ageCategory: "cachorro",
-        image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop",
+        image: "https://static.wixstatic.com/media/8af33b_07682aa4c0f445ed91cbd1e8b28ceeb3~mv2.jpg/v1/fill/w_228,h_228,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8af33b_07682aa4c0f445ed91cbd1e8b28ceeb3~mv2.jpg",
         urgent: false
     },
     {
@@ -65,8 +65,8 @@ let pets = [
         name: "Thor",
         type: "Perro",
         sex: "Macho",
-        age: "5 años",
-        ageCategory: "adulto",
+        age: "8 años",
+        ageCategory: "senior",
         image: "https://images.unsplash.com/photo-1568572933382-74d440642117?w=400&h=400&fit=crop",
         urgent: false
     },
@@ -82,11 +82,11 @@ let pets = [
     },
     {
         id: 9,
-        name: "Bruno",
+        name: "Bala",
         type: "Perro",
-        sex: "Macho",
-        age: "1 año",
-        ageCategory: "joven",
+        sex: "Hembra",
+        age: "11 meses",
+        ageCategory: "cachorro",
         image: "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -95,14 +95,14 @@ let pets = [
         name: "Pelusa",
         type: "Gato",
         sex: "Hembra",
-        age: "4 meses",
+        age: "2 años",
         ageCategory: "cachorro",
         image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=400&fit=crop",
         urgent: true
     },
     {
         id: 11,
-        name: "Toby",
+        name: "Beto",
         type: "Perro",
         sex: "Macho",
         age: "6 años",
@@ -118,6 +118,26 @@ let pets = [
         age: "8 años",
         ageCategory: "senior",
         image: "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&h=400&fit=crop",
+        urgent: false
+    },
+    {
+        id: 13,
+        name: "Sergio",
+        type: "Gato",
+        sex: "Macho",
+        age: "2 años",
+        ageCategory: "adulto",
+        image: "https://www.elespectador.com/resizer/KC2rYnJ7xwQ5srRjOCnOHJVE4rw=/arc-anglerfish-arc2-prod-elespectador/public/KHYLDDXDT5BCLBABKRR6LXRLQU.jpg",
+        urgent: false
+    },
+    {
+        id: 14,
+        name: "Perla",
+        type: "Perro",
+        sex: "Hembra",
+        age: "2 años",
+        ageCategory: "adulto",
+        image: "https://purina.com.pe/sites/default/files/2023-01/purina-nombres-para-perritas-hembras-05%20%281%29.png",
         urgent: false
     }
 ];
