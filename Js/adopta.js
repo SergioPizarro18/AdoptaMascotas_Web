@@ -8,14 +8,14 @@ let pets = [
         age: "2 años",
         ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=400&fit=crop",
-        urgent: false
+        urgent: true
     },
     {
         id: 2,
         name: "Luna",
         type: "Gato",
         sex: "Hembra",
-        age: "2 año",
+        age: "2 años",
         ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop",
         urgent: true
@@ -25,7 +25,7 @@ let pets = [
         name: "Rocky",
         type: "Perro",
         sex: "Macho",
-        age: "3 años",
+        age: "4 años",
         ageCategory: "adulto",
         image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop",
         urgent: false
@@ -75,7 +75,7 @@ let pets = [
         name: "Nala",
         type: "Gato",
         sex: "Hembra",
-        age: "3 años",
+        age: "4 años",
         ageCategory: "adulto",
         image: "https://static.wixstatic.com/media/8af33b_047145a7c3644f89acfb223379601813~mv2.jpeg/v1/fill/w_228,h_228,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8af33b_047145a7c3644f89acfb223379601813~mv2.jpeg",
         urgent: false
@@ -96,7 +96,7 @@ let pets = [
         type: "Gato",
         sex: "Hembra",
         age: "2 años",
-        ageCategory: "cachorro",
+        ageCategory: "joven",
         image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=400&fit=crop",
         urgent: true
     },
@@ -126,7 +126,7 @@ let pets = [
         type: "Gato",
         sex: "Macho",
         age: "2 años",
-        ageCategory: "adulto",
+        ageCategory: "joven",
         image: "https://www.elespectador.com/resizer/KC2rYnJ7xwQ5srRjOCnOHJVE4rw=/arc-anglerfish-arc2-prod-elespectador/public/KHYLDDXDT5BCLBABKRR6LXRLQU.jpg",
         urgent: false
     },
@@ -136,7 +136,7 @@ let pets = [
         type: "Perro",
         sex: "Hembra",
         age: "2 años",
-        ageCategory: "adulto",
+        ageCategory: "joven",
         image: "https://purina.com.pe/sites/default/files/2023-01/purina-nombres-para-perritas-hembras-05%20%281%29.png",
         urgent: false
     }
