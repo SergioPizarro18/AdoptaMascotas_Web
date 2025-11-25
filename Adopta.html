@@ -36,12 +36,13 @@
         </div>
     </header>
 
-    <!-- Contenedor Principal -->
+    <!-- Contenedor Principal con Layout de 2 columnas -->
     <div class="container">
-        <!-- Sección de Filtros -->
-        <div class="filters-section">
-            <h2>Encuentra tu compañero ideal</h2>
-            <div class="filters">
+        <div class="main-layout">
+            <!-- Sidebar de Filtros (Izquierda) -->
+            <aside class="filters-sidebar">
+                <h2>Filtros</h2>
+                
                 <div class="filter-group">
                     <label for="filterSex">Buscar por sexo:</label>
                     <select id="filterSex">
@@ -70,11 +71,14 @@
                         <option value="desc">Z - A</option>
                     </select>
                 </div>
-            </div>
-        </div>
+            </aside>
 
-        <!-- Grid de Mascotas -->
-        <div id="petsContainer" class="pets-grid"></div>
+            <!-- Contenido Principal (Derecha) -->
+            <main class="content-area">
+                <!-- Grid de Mascotas -->
+                <div id="petsContainer" class="pets-grid"></div>
+            </main>
+        </div>
     </div>
 
     <!-- Footer -->
