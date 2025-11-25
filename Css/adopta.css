@@ -151,45 +151,43 @@ body {
 
 /* Contenedor principal */
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Sección de filtros */
-.filters-section {
+/* Layout de 2 columnas */
+.main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Sidebar de Filtros (Izquierda) */
+.filters-sidebar {
     background: white;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 12px;
-    margin-bottom: 2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #264653;
+    position: sticky;
+    top: 90px;
 }
 
-.filters-section h2 {
+.filters-sidebar h2 {
     color: #264653;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.filters {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: flex-start;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #2A9D8F;
+    padding-bottom: 0.5rem;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    flex: 1;
-    min-width: 200px;
-}
-
-.filter-group:nth-child(2) {
-    margin-left: auto;
+    margin-bottom: 1.5rem;
 }
 
 .filter-group label {
@@ -198,53 +196,36 @@ body {
     font-size: 0.9rem;
 }
 
-select, input {
+select {
     padding: 0.75rem 1rem;
     border: 2px solid #264653;
     border-radius: 8px;
     font-size: 1rem;
     background-color: #FAFAF5;
     color: #264653;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-select {
-    cursor: pointer;
-}
-
-input[type="text"] {
-    cursor: text;
-}
-
-select:hover, input:hover {
+select:hover {
     border-color: #FF9F66;
 }
 
-select:focus, input:focus {
+select:focus {
     outline: none;
     border-color: #FF9F66;
     box-shadow: 0 0 0 3px rgba(255, 159, 102, 0.1);
 }
 
-/* Botón de búsqueda */
-.btn-search {
-    padding: 0.75rem 2rem;
-    background-color: #FF9F66;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    height: fit-content;
+/* Área de contenido principal (Derecha) */
+.content-area {
+    min-height: 500px;
 }
 
-.btn-search:hover {
-    background-color: #ff8c4d;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 159, 102, 0.3);
+.content-title {
+    color: #264653;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* Grid de mascotas */
@@ -252,7 +233,6 @@ select:focus, input:focus {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 /* Card de mascota */
@@ -351,6 +331,7 @@ select:focus, input:focus {
     padding: 3rem;
     color: #264653;
     font-size: 1.2rem;
+    grid-column: 1 / -1;
 }
 
 /* Footer */
@@ -437,6 +418,12 @@ select:focus, input:focus {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -454,13 +441,12 @@ select:focus, input:focus {
         justify-content: center;
     }
 
-    .filters {
-        flex-direction: column;
-        align-items: stretch;
+    .main-layout {
+        grid-template-columns: 1fr;
     }
 
-    .btn-search {
-        align-self: stretch;
+    .filters-sidebar {
+        position: static;
     }
 
     .pets-grid {
