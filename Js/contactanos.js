@@ -1,8 +1,3 @@
-function selectPlan(planName) {
-    alert(`¡Gracias por elegir el Plan ${planName}! En breve te contactaremos para completar tu suscripción.`);
-}
-
-
 // Toggle del menú de ayuda con click
 document.addEventListener('DOMContentLoaded', function() {
     const helpDropdown = document.querySelector('.help-dropdown');
