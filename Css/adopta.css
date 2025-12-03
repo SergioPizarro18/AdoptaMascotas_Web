@@ -23,30 +23,40 @@ body {
     z-index: 100;
 }
 
+/* ===== LOGO MEJORADO ===== */
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
 }
 
 .logo-image-large {
-    width: 80px;           /* Más grande */
-    height: 80px;          
-    border-radius: 50%;    
+    width: 60px;
+    height: 60px;
     object-fit: cover;
-    background-color: white;
-    /*padding: 4px;*/
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra para destacarlo */
-    transition: transform 0.3s ease;
+    background-color: transparent;
+    padding: 0;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+    transition: all 0.3s ease;
 }
 
-/* Efecto hover opcional */
 .logo-image-large:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 /*
@@ -165,6 +175,44 @@ body {
 .btn-login:hover {
     background-color: white;
     color: #2A9D8F;
+}
+
+/* Breadcrumb */
+.breadcrumb-nav {
+    background-color: #FAFAF5;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.breadcrumb-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.breadcrumb-link {
+    color: #2A9D8F;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #E9C46A;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: #999;
+    margin: 0 0.25rem;
+}
+
+.breadcrumb-current {
+    color: #666;
+    font-weight: 500;
 }
 
 /* Contenedor principal */
