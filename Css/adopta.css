@@ -32,6 +32,24 @@ body {
     color: white;
 }
 
+.logo-image-large {
+    width: 80px;           /* Más grande */
+    height: 80px;          
+    border-radius: 50%;    
+    object-fit: cover;
+    background-color: white;
+    /*padding: 4px;*/
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra para destacarlo */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover opcional */
+.logo-image-large:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/*
 .logo-icon {
     width: 50px;
     height: 50px;
@@ -42,7 +60,7 @@ body {
     justify-content: center;
     color: #2A9D8F;
     font-size: 1.5rem;
-}
+}*/
 
 .nav-menu {
     display: flex;
@@ -151,42 +169,44 @@ body {
 
 /* Contenedor principal */
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
+    min-height: calc(100vh - 200px); /* Nueva línea */
 }
 
-/* Sección de filtros */
-.filters-section {
+/* Layout de 2 columnas */
+.main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Sidebar de Filtros (Izquierda) */
+.filters-sidebar {
     background: white;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 12px;
-    margin-bottom: 2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #264653;
+    position: sticky;
+    top: 90px;
 }
 
-.filters-section h2 {
+.filters-sidebar h2 {
     color: #264653;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.filters {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #2A9D8F;
+    padding-bottom: 0.5rem;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-}
-
-.filter-group:nth-child(2) {
-    margin-left: auto;
+    margin-bottom: 1.5rem;
 }
 
 .filter-group label {
@@ -195,53 +215,36 @@ body {
     font-size: 0.9rem;
 }
 
-select, input {
+select {
     padding: 0.75rem 1rem;
     border: 2px solid #264653;
     border-radius: 8px;
     font-size: 1rem;
     background-color: #FAFAF5;
     color: #264653;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-select {
-    cursor: pointer;
-}
-
-input[type="text"] {
-    cursor: text;
-}
-
-select:hover, input:hover {
+select:hover {
     border-color: #FF9F66;
 }
 
-select:focus, input:focus {
+select:focus {
     outline: none;
     border-color: #FF9F66;
     box-shadow: 0 0 0 3px rgba(255, 159, 102, 0.1);
 }
 
-/* Botón de búsqueda */
-.btn-search {
-    padding: 0.75rem 2rem;
-    background-color: #FF9F66;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    height: fit-content;
+/* Área de contenido principal (Derecha) */
+.content-area {
+    min-height: 500px;
 }
 
-.btn-search:hover {
-    background-color: #ff8c4d;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 159, 102, 0.3);
+.content-title {
+    color: #264653;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* Grid de mascotas */
@@ -249,7 +252,6 @@ select:focus, input:focus {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 /* Card de mascota */
@@ -348,6 +350,7 @@ select:focus, input:focus {
     padding: 3rem;
     color: #264653;
     font-size: 1.2rem;
+    grid-column: 1 / -1;
 }
 
 /* Footer */
@@ -434,6 +437,12 @@ select:focus, input:focus {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -451,16 +460,55 @@ select:focus, input:focus {
         justify-content: center;
     }
 
-    .filters {
-        flex-direction: column;
-        align-items: stretch;
+    .main-layout {
+        grid-template-columns: 1fr;
     }
 
-    .btn-search {
-        align-self: stretch;
+    .filters-sidebar {
+        position: static;
     }
 
     .pets-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Animación para las tarjetas de mascotas */
+.pet-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    
+    /* Animación de entrada */
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Retraso progresivo para cada tarjeta */
+.pet-card:nth-child(1) { animation-delay: 0.2s; }
+.pet-card:nth-child(2) { animation-delay: 0.3s; }
+.pet-card:nth-child(3) { animation-delay: 0.4s; }
+.pet-card:nth-child(4) { animation-delay: 0.5s; }
+.pet-card:nth-child(5) { animation-delay: 0.6s; }
+.pet-card:nth-child(6) { animation-delay: 0.7s; }
+.pet-card:nth-child(7) { animation-delay: 0.8s; }
+.pet-card:nth-child(8) { animation-delay: 0.9s; }
+.pet-card:nth-child(9) { animation-delay: 1s; }
+.pet-card:nth-child(10) { animation-delay: 1.1s; }
+.pet-card:nth-child(11) { animation-delay: 1.2s; }
+.pet-card:nth-child(12) { animation-delay: 1.3s; }
+
+/* Keyframes para la animación fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
