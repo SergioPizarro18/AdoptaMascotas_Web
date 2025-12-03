@@ -145,6 +145,19 @@ let pets = [
 let filteredPets = [...pets];
 let currentTypeFilter = 'all';
 
+// Función para actualizar el breadcrumb
+function updateBreadcrumb() {
+    const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+    
+    if (currentTypeFilter === 'Perro') {
+        breadcrumbCurrent.textContent = 'Perritos';
+    } else if (currentTypeFilter === 'Gato') {
+        breadcrumbCurrent.textContent = 'Gatitos';
+    } else {
+        breadcrumbCurrent.textContent = 'Adopta';
+    }
+}
+
 // Función para mostrar alerta cuando no se encuentra mascota
 function showAlert() {
     const overlay = document.createElement('div');
@@ -209,6 +222,7 @@ function renderPets(petsToRender) {
 // Función para filtrar por tipo de mascota
 function filterByType(type) {
     currentTypeFilter = type;
+    updateBreadcrumb();
     applyFilters();
 }
 
