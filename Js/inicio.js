@@ -1,95 +1,24 @@
-// ===== CARUSEL =====
-const images = [
-  "https://placedog.net/900/500",
-  "https://picsum.photos/900/500?random=10",
-  "https://picsum.photos/900/500?random=11",
-  "https://picsum.photos/900/500?random=12"
-];
+// Toggle del menú de ayuda con click
+document.addEventListener('DOMContentLoaded', function() {
+    const helpDropdown = document.querySelector('.help-dropdown');
+    const helpButton = document.querySelector('.btn-help-circle');
+    const helpMenu = document.querySelector('.help-dropdown-menu');
 
-// Elementos del DOM
-const imgElement = document.getElementById("carousel-img");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const dotsContainer = document.getElementById("carousel-dots");
-
-let index = 0;
-
-// Cargar imagen inicial
-imgElement.src = images[index];
-
-// Crear indicadores dinámicos
-images.forEach((_, i) => {
-  const dot = document.createElement("div");
-  dot.classList.add("dot");
-  if (i === 0) dot.classList.add("active");
-
-  dot.addEventListener("click", () => {
-    index = i;
-    updateCarousel();
-  });
-
-  dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll(".dot");
-
-// Cambiar imagen + dot activo
-function updateCarousel() {
-  imgElement.src = images[index];
-
-  dots.forEach(d => d.classList.remove("active"));
-  dots[index].classList.add("active");
-}
-
-// Botón siguiente
-nextBtn.addEventListener("click", () => {
-  index = (index + 1) % images.length;
-  updateCarousel();
-});
-
-// Botón anterior
-prevBtn.addEventListener("click", () => {
-  index = (index - 1 + images.length) % images.length;
-  updateCarousel();
-});
-
-// ===== MODAL LOGIN =====
-const loginBtn = document.querySelector(".btn-login");
-const modal = document.getElementById("loginModal");
-const closeBtn = document.querySelector(".modal-close");
-
-// Verificar que los elementos existen antes de asignar eventos
-if (loginBtn && modal && closeBtn) {
-
-    // Abrir modal
-    loginBtn.addEventListener("click", () => {
-        modal.style.display = "flex";  // Flex para centrar
+    // Toggle del menú al hacer click en el botón
+    helpButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        helpMenu.classList.toggle('show');
     });
 
-    // Cerrar modal con X
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-
-    // Cerrar modal haciendo clic en el fondo sombreado
-    modal.addEventListener("click", (e) => {
-        if (e.target === modal) {  // Detecta clic solo fuera de la caja
-            modal.style.display = "none";
+    // Cerrar el menú al hacer click fuera de él
+    document.addEventListener('click', function(e) {
+        if (!helpDropdown.contains(e.target)) {
+            helpMenu.classList.remove('show');
         }
     });
 
-} else {
-    console.warn("⚠️ Advertencia: No se encontró alguno de los elementos del modal (btn-login, loginModal o modal-close).");
-}
-
-// Dropdown de ayuda
-document.addEventListener("click", function (e) {
-    const dropdown = document.querySelector(".help-dropdown");
-    const menu = document.querySelector(".help-dropdown-menu");
-
-    if (dropdown.contains(e.target)) {
-        menu.classList.toggle("show");
-    } else {
-        menu.classList.remove("show");
-    }
+    // Prevenir que el menú se cierre al hacer click dentro de él
+    helpMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
 });
