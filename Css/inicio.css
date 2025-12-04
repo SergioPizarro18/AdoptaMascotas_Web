@@ -25,6 +25,7 @@ body {
 
 /* LOGO MEJORADO */
 .logo {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.75rem;
