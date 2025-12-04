@@ -24,7 +24,7 @@ Lila está lista para encontrar un hogar amoroso que le brinde la segunda oportu
     location: "Refugio Central - Lima, Perú",
     contact: "+51 930 213 687",
     views: 1250,
-    cta: "Aplica para adoptarla",
+    cta: "Ver disponibles para adoptar",
     featured: true
   },
   {
@@ -55,7 +55,7 @@ Resultados:
     location: "Parque Central, Lima",
     contact: "+51 930 213 687",
     views: 2100,
-    cta: "Ver más eventos",
+    cta: "Ayudar y colaborar",
     featured: false
   },
   {
@@ -82,7 +82,7 @@ Estado de salud: ✓ Desparasitado ✓ Examen veterinario completado ✓ Listo p
     location: "Refugio Central - Lima, Perú",
     contact: "+51 930 213 687",
     views: 890,
-    cta: "Conócelo para adoptarlo",
+    cta: "Ver disponibles para adoptar",
     featured: false
   },
   {
@@ -116,7 +116,7 @@ Satisfacción: 98% de rating positivo
     location: "Centro Comunitario - Lima",
     contact: "+51 930 213 687",
     views: 650,
-    cta: "Regístrate al próximo taller",
+    cta: "Únete y colabora con nosotros",
     featured: false
   },
   {
@@ -151,7 +151,7 @@ El tratamiento completo costó $1,800 USD. Seguimos recibiendo donaciones para c
     contact: "+51 930 213 687",
     medicalCost: "$1,800 USD",
     views: 3200,
-    cta: "Dona para su tratamiento",
+    cta: "Ayuda y contribuye",
     featured: false
   },
   {
@@ -180,7 +180,7 @@ Su generosidad y compromiso nos motiva a seguir trabajando por los animales que 
     location: "Institución Educativa - Lima",
     contact: "+51 930 213 687",
     views: 1500,
-    cta: "Conoce cómo donar",
+    cta: "Haz tu donación",
     featured: false
   },
   {
@@ -217,7 +217,7 @@ Recibimos fotos de Pipo jugando en su nuevo hogar. ¡Está felicísimo! Esta es 
     location: "Refugio Central - Lima",
     contact: "+51 930 213 687",
     views: 2800,
-    cta: "Ver historias de adopción",
+    cta: "Ver disponibles para adoptar",
     featured: false
   },
   {
@@ -254,7 +254,7 @@ Procedimientos: Del 15 al 20 de marzo`,
     location: "Centro Veterinario - Lima",
     contact: "+51 930 213 687",
     views: 1900,
-    cta: "Inscríbete aquí",
+    cta: "Únete y colabora con nosotros",
     featured: false
   },
   {
@@ -291,7 +291,7 @@ Hoy, después de 4 semanas:
     location: "Refugio Central - Lima",
     contact: "+51 930 213 687",
     views: 1120,
-    cta: "Conoce su proceso",
+    cta: "Ver disponibles para adoptar",
     featured: false
   },
   {
@@ -330,7 +330,7 @@ Horario: Lunes a Domingo, 8:00 AM - 8:00 PM`,
     location: "Av. Principal 1234, Lima",
     contact: "+51 930 213 687",
     views: 980,
-    cta: "Apoya nuestros convenios",
+    cta: "Únete y colabora con nosotros",
     featured: false
   }
 ];
@@ -540,22 +540,20 @@ function shareNews() {
 function handleNewsCTA(newsId) {
   const news = newsData.find(n => n.id === newsId);
   
-  // Aquí puedes implementar la lógica específica para cada tipo de acción
-  if (news.category === "Rescate" && news.animal) {
-    alert(`¡Te interesa ${news.animal.name}!\n\nEspecie: ${news.animal.species}\nEdad: ${news.animal.age}\n\nEn breve te contactaremos para coordinar una visita.`);
-    // Redirigir a página de adopción
-    // window.location.href = `/adopcion/${newsId}`;
-  } else if (news.category === "Evento") {
-    alert(`¡Gracias por tu interés en nuestros eventos!\n\nTe redirigiremos a la página de registro.`);
-    // window.location.href = `/eventos/${newsId}`;
-  } else if (news.category === "Donaciones" || news.category === "Recuperación") {
-    alert(`¡Gracias por querer ayudar!\n\nTe redirigiremos a nuestra página de donaciones.`);
-    // window.location.href = "/donaciones";
+  // Redireccionar según la categoría
+  if (news.category === "Rescate" || news.category === "Adopción") {
+    // Animales - ir a Adopta.html
+    window.location.href = "/Adopta.html";
+  } else if (news.category === "Donaciones") {
+    // Solo Donaciones - ir a Consultas.html
+    window.location.href = "/Consultas.html";
+  } else if (news.category === "Recuperación" || news.category === "Evento" || news.category === "Voluntariado" || news.category === "Comunidad") {
+    // Recuperación, Eventos y comunidad - ir a Ayudanos.html
+    window.location.href = "/Ayudanos.html";
   } else {
-    alert(`Más información sobre: ${news.title}`);
-    // window.location.href = `/noticias/${newsId}`;
+    // Por defecto - ir a Inicio
+    window.location.href = "/Inicio.html";
   }
-  closeNewsModal();
 }
 
 // Toggle del menú de ayuda con click
