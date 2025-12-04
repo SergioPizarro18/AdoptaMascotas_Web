@@ -262,7 +262,14 @@ function applyFilters() {
 // Función para adoptar mascota
 function adoptPet(petId) {
     const pet = pets.find(p => p.id === petId);
-    alert(`¡Gracias por tu interés en adoptar a ${pet.name}! En breve te contactaremos.`);
+
+    if (petId === 1) {
+        // Redirige si el ID es 1
+        window.location.href = '/Adopta/perro.html';
+    } else if (petId === 2) {
+        // Redirige si el ID es 2
+        window.location.href = '/Adopta/gato.html';
+    }
 }
 
 // Event Listeners
