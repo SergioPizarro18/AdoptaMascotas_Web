@@ -1,32 +1,31 @@
-// Toggle del menú de ayuda con click
+// Toggle del menú de ayuda
 document.addEventListener('DOMContentLoaded', function() {
-    const helpDropdown = document.querySelector('.help-dropdown');
     const helpButton = document.querySelector('.btn-help-circle');
     const helpMenu = document.querySelector('.help-dropdown-menu');
 
-    // Toggle del menú al hacer click en el botón
-    helpButton.addEventListener('click', function(e) {
-        e.stopPropagation();
-        helpMenu.classList.toggle('show');
-    });
+    if (helpButton && helpMenu) {
+        helpButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            helpMenu.classList.toggle('show');
+        });
 
-    // Cerrar el menú al hacer click fuera de él
-    document.addEventListener('click', function(e) {
-        if (!helpDropdown.contains(e.target)) {
-            helpMenu.classList.remove('show');
-        }
-    });
-
-    // Prevenir que el menú se cierre al hacer click dentro de él
-    helpMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.help-dropdown')) {
+                helpMenu.classList.remove('show');
+            }
+        });
+    }
 });
 
-
-// Validación en tiempo real y envío del formulario
+// Formulario de contacto
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
+    
+    if (!form) {
+        console.error('No se encontró el formulario');
+        return;
+    }
+
     const nombreInput = document.getElementById('nombre');
     const emailInput = document.getElementById('email');
     const telefonoInput = document.getElementById('telefono');
@@ -36,74 +35,97 @@ document.addEventListener('DOMContentLoaded', function() {
     const successMessage = document.getElementById('successMessage');
     const characterCounter = document.getElementById('mensaje-counter');
 
-    // Contador de caracteres para el mensaje
-    mensajeTextarea.addEventListener('input', function() {
-        const length = this.value.length;
-        characterCounter.textContent = `${length}/1000`;
-        
-        if (length > 900) {
-            characterCounter.style.color = '#FF6B6B';
-        } else {
-            characterCounter.style.color = '#999';
-        }
-    });
+    // Contador de caracteres
+    if (mensajeTextarea && characterCounter) {
+        mensajeTextarea.addEventListener('input', function() {
+            const length = this.value.length;
+            characterCounter.textContent = `${length}/1000`;
+            
+            if (length > 1000) {
+                characterCounter.style.color = '#FF6B6B';
+                characterCounter.style.fontWeight = 'bold';
+            } else if (length > 900) {
+                characterCounter.style.color = '#FF9F66';
+            } else {
+                characterCounter.style.color = '#999';
+                characterCounter.style.fontWeight = 'normal';
+            }
+        });
+    }
 
-    // Validación en tiempo real para nombre
-    nombreInput.addEventListener('blur', function() {
-        validateNombre();
-    });
+    // Auto-formato para teléfono
+    if (telefonoInput) {
+        telefonoInput.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            
+            if (value.startsWith('51')) {
+                value = '+' + value;
+            }
+            
+            if (value.startsWith('+51') && value.length > 3) {
+                const numbers = value.substring(3);
+                if (numbers.length <= 3) {
+                    value = '+51 ' + numbers;
+                } else if (numbers.length <= 6) {
+                    value = '+51 ' + numbers.substring(0, 3) + ' ' + numbers.substring(3);
+                } else {
+                    value = '+51 ' + numbers.substring(0, 3) + ' ' + numbers.substring(3, 6) + ' ' + numbers.substring(6, 9);
+                }
+            }
+            
+            this.value = value;
+        });
+    }
 
-    nombreInput.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-            validateNombre();
-        }
-    });
+    // Validación en tiempo real para cada campo
+    if (nombreInput) {
+        nombreInput.addEventListener('blur', validateNombre);
+        nombreInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                validateNombre();
+            }
+        });
+    }
 
-    // Validación en tiempo real para email
-    emailInput.addEventListener('blur', function() {
-        validateEmail();
-    });
+    if (emailInput) {
+        emailInput.addEventListener('blur', validateEmail);
+        emailInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                validateEmail();
+            }
+        });
+    }
 
-    emailInput.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-            validateEmail();
-        }
-    });
+    if (telefonoInput) {
+        telefonoInput.addEventListener('blur', validateTelefono);
+        telefonoInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                validateTelefono();
+            }
+        });
+    }
 
-    // Validación en tiempo real para teléfono
-    telefonoInput.addEventListener('blur', function() {
-        validateTelefono();
-    });
+    if (asuntoSelect) {
+        asuntoSelect.addEventListener('change', validateAsunto);
+    }
 
-    telefonoInput.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-            validateTelefono();
-        }
-    });
+    if (mensajeTextarea) {
+        mensajeTextarea.addEventListener('blur', validateMensaje);
+        mensajeTextarea.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                validateMensaje();
+            }
+        });
+    }
 
-    // Validación para asunto
-    asuntoSelect.addEventListener('change', function() {
-        validateAsunto();
-    });
+    if (privacidadCheckbox) {
+        privacidadCheckbox.addEventListener('change', validatePrivacidad);
+    }
 
-    // Validación para mensaje
-    mensajeTextarea.addEventListener('blur', function() {
-        validateMensaje();
-    });
-
-    mensajeTextarea.addEventListener('input', function() {
-        if (this.classList.contains('error')) {
-            validateMensaje();
-        }
-    });
-
-    // Validación para checkbox de privacidad
-    privacidadCheckbox.addEventListener('change', function() {
-        validatePrivacidad();
-    });
-
-    // Función de validación de nombre
+    // Funciones de validación
     function validateNombre() {
+        if (!nombreInput) return true;
+        
         const nombre = nombreInput.value.trim();
         const errorSpan = document.getElementById('nombre-error');
         
@@ -122,8 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Función de validación de email
     function validateEmail() {
+        if (!emailInput) return true;
+        
         const email = emailInput.value.trim();
         const errorSpan = document.getElementById('email-error');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -132,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showError(emailInput, errorSpan, 'El correo electrónico es obligatorio');
             return false;
         } else if (!emailRegex.test(email)) {
-            showError(emailInput, errorSpan, 'Por favor ingresa un correo electrónico válido');
+            showError(emailInput, errorSpan, 'Ingresa un correo válido (ejemplo: tu@email.com)');
             return false;
         } else {
             showSuccess(emailInput, errorSpan);
@@ -140,18 +163,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Función de validación de teléfono (opcional pero con formato si se ingresa)
     function validateTelefono() {
+        if (!telefonoInput) return true;
+        
         const telefono = telefonoInput.value.trim();
         const errorSpan = document.getElementById('telefono-error');
         
-        // Si está vacío, es válido porque es opcional
         if (telefono === '') {
             clearValidation(telefonoInput, errorSpan);
             return true;
         }
         
-        // Si tiene contenido, validar formato
         const telefonoRegex = /^\+?51\s?\d{3}\s?\d{3}\s?\d{3}$/;
         
         if (!telefonoRegex.test(telefono)) {
@@ -163,8 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Función de validación de asunto
     function validateAsunto() {
+        if (!asuntoSelect) return true;
+        
         const asunto = asuntoSelect.value;
         const errorSpan = document.getElementById('asunto-error');
         
@@ -177,8 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Función de validación de mensaje
     function validateMensaje() {
+        if (!mensajeTextarea) return true;
+        
         const mensaje = mensajeTextarea.value.trim();
         const errorSpan = document.getElementById('mensaje-error');
         
@@ -189,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showError(mensajeTextarea, errorSpan, 'El mensaje debe tener al menos 10 caracteres');
             return false;
         } else if (mensaje.length > 1000) {
-            showError(mensajeTextarea, errorSpan, 'El mensaje no puede exceder los 1000 caracteres');
+            showError(mensajeTextarea, errorSpan, 'El mensaje no puede exceder 1000 caracteres');
             return false;
         } else {
             showSuccess(mensajeTextarea, errorSpan);
@@ -197,53 +221,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Función de validación de privacidad
     function validatePrivacidad() {
+        if (!privacidadCheckbox) return true;
+        
         const errorSpan = document.getElementById('privacidad-error');
         
         if (!privacidadCheckbox.checked) {
-            errorSpan.textContent = 'Debes aceptar la política de privacidad';
-            errorSpan.classList.add('show');
+            if (errorSpan) {
+                errorSpan.textContent = 'Debes aceptar la política de privacidad';
+                errorSpan.classList.add('show');
+            }
             return false;
         } else {
-            errorSpan.textContent = '';
-            errorSpan.classList.remove('show');
+            if (errorSpan) {
+                errorSpan.textContent = '';
+                errorSpan.classList.remove('show');
+            }
             return true;
         }
     }
 
-    // Función para mostrar error
     function showError(input, errorSpan, message) {
+        if (!input) return;
+        
         input.classList.remove('success');
         input.classList.add('error');
-        errorSpan.textContent = message;
-        errorSpan.classList.add('show');
         
-        // Accesibilidad: anunciar error a lectores de pantalla
+        if (errorSpan) {
+            errorSpan.textContent = message;
+            errorSpan.classList.add('show');
+        }
+        
         input.setAttribute('aria-invalid', 'true');
     }
 
-    // Función para mostrar éxito
     function showSuccess(input, errorSpan) {
+        if (!input) return;
+        
         input.classList.remove('error');
         input.classList.add('success');
-        errorSpan.textContent = '';
-        errorSpan.classList.remove('show');
         
-        // Accesibilidad
+        if (errorSpan) {
+            errorSpan.textContent = '';
+            errorSpan.classList.remove('show');
+        }
+        
         input.setAttribute('aria-invalid', 'false');
     }
 
-    // Función para limpiar validación
     function clearValidation(input, errorSpan) {
+        if (!input) return;
+        
         input.classList.remove('error', 'success');
-        errorSpan.textContent = '';
-        errorSpan.classList.remove('show');
+        
+        if (errorSpan) {
+            errorSpan.textContent = '';
+            errorSpan.classList.remove('show');
+        }
+        
         input.removeAttribute('aria-invalid');
     }
 
-    // Validación completa del formulario
-    function validateForm() {
+    // ENVÍO DEL FORMULARIO
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        console.log('🚀 Intentando enviar formulario...');
+        
+        // Ocultar mensaje de éxito previo
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+        
+        // Validar todos los campos
         const isNombreValid = validateNombre();
         const isEmailValid = validateEmail();
         const isTelefonoValid = validateTelefono();
@@ -251,21 +301,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const isMensajeValid = validateMensaje();
         const isPrivacidadValid = validatePrivacidad();
         
-        return isNombreValid && isEmailValid && isTelefonoValid && 
-               isAsuntoValid && isMensajeValid && isPrivacidadValid;
-    }
-
-    // Manejo del envío del formulario
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        console.log('Validaciones:', {
+            nombre: isNombreValid,
+            email: isEmailValid,
+            telefono: isTelefonoValid,
+            asunto: isAsuntoValid,
+            mensaje: isMensajeValid,
+            privacidad: isPrivacidadValid
+        });
         
-        // Ocultar mensaje de éxito previo si existe
-        successMessage.style.display = 'none';
+        // Si hay errores, hacer scroll al primero
+        if (!isNombreValid || !isEmailValid || !isTelefonoValid || !isAsuntoValid || !isMensajeValid || !isPrivacidadValid) {
+            console.log('❌ Hay errores en el formulario');
+            const firstError = form.querySelector('.error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+            }
+            return;
+        }
         
-        // Validar formulario completo
-        if (validateForm()) {
-            // Deshabilitar botón de envío para evitar múltiples envíos
-            const submitButton = form.querySelector('button[type="submit"]');
+        console.log('✅ Formulario válido, procediendo a enviar...');
+        
+        // Todo válido, proceder con envío
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        if (submitButton) {
             submitButton.disabled = true;
             submitButton.innerHTML = `
                 <svg class="spin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -273,40 +334,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 </svg>
                 Enviando...
             `;
+        }
+        
+        // Simular envío
+        setTimeout(function() {
+            const formData = {
+                nombre: nombreInput ? nombreInput.value.trim() : '',
+                email: emailInput ? emailInput.value.trim() : '',
+                telefono: telefonoInput ? telefonoInput.value.trim() : '',
+                asunto: asuntoSelect ? asuntoSelect.value : '',
+                mensaje: mensajeTextarea ? mensajeTextarea.value.trim() : ''
+            };
             
-            // Simular envío (aquí conectarías con tu backend)
-            setTimeout(() => {
-                // Recopilar datos del formulario
-                const formData = {
-                    nombre: nombreInput.value.trim(),
-                    email: emailInput.value.trim(),
-                    telefono: telefonoInput.value.trim(),
-                    asunto: asuntoSelect.value,
-                    mensaje: mensajeTextarea.value.trim(),
-                    privacidad: privacidadCheckbox.checked
-                };
-                
-                console.log('Datos del formulario:', formData);
-                
-                // Mostrar mensaje de éxito
+            console.log('📧 Formulario enviado con éxito:', formData);
+            
+            // MOSTRAR MENSAJE DE ÉXITO
+            if (successMessage) {
                 successMessage.style.display = 'flex';
-                
-                // Scroll al mensaje de éxito
+                successMessage.style.opacity = '1';
                 successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Limpiar formulario
-                form.reset();
-                
-                // Limpiar validaciones visuales
-                document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-                    input.classList.remove('success', 'error');
-                });
-                
-                // Resetear contador de caracteres
+            }
+            
+            // LIMPIAR FORMULARIO
+            form.reset();
+            
+            // Limpiar validaciones
+            document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                input.classList.remove('success', 'error');
+                input.removeAttribute('aria-invalid');
+            });
+            
+            document.querySelectorAll('.error-message').forEach(span => {
+                span.textContent = '';
+                span.classList.remove('show');
+            });
+            
+            // Resetear contador
+            if (characterCounter) {
                 characterCounter.textContent = '0/1000';
                 characterCounter.style.color = '#999';
-                
-                // Restaurar botón
+                characterCounter.style.fontWeight = 'normal';
+            }
+            
+            // Restaurar botón
+            if (submitButton) {
                 submitButton.disabled = false;
                 submitButton.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -315,78 +386,52 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                     Enviar Consulta
                 `;
-                
-                // Ocultar mensaje de éxito después de 5 segundos
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-                
-            }, 1500); // Simula tiempo de envío
+            }
             
-        } else {
-            // Si hay errores, hacer scroll al primer campo con error
-            const firstError = form.querySelector('.error');
-            if (firstError) {
-                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                firstError.focus();
+            // Ocultar mensaje después de 7 segundos
+            setTimeout(function() {
+                if (successMessage) {
+                    successMessage.style.opacity = '0';
+                    setTimeout(function() {
+                        successMessage.style.display = 'none';
+                        successMessage.style.opacity = '1';
+                    }, 300);
+                }
+            }, 7000);
+            
+        }, 1500);
+    });
+
+    // Botón reset
+    const resetButton = form.querySelector('button[type="reset"]');
+    if (resetButton) {
+        resetButton.addEventListener('click', function() {
+            document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                input.classList.remove('success', 'error');
+                input.removeAttribute('aria-invalid');
+            });
+            
+            document.querySelectorAll('.error-message').forEach(span => {
+                span.textContent = '';
+                span.classList.remove('show');
+            });
+            
+            if (characterCounter) {
+                characterCounter.textContent = '0/1000';
+                characterCounter.style.color = '#999';
+                characterCounter.style.fontWeight = 'normal';
             }
-        }
-    });
-
-    // Manejo del botón de reseteo
-    form.addEventListener('reset', function() {
-        // Limpiar todas las validaciones
-        document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-            input.classList.remove('success', 'error');
-            input.removeAttribute('aria-invalid');
-        });
-        
-        document.querySelectorAll('.error-message').forEach(span => {
-            span.textContent = '';
-            span.classList.remove('show');
-        });
-        
-        // Resetear contador
-        characterCounter.textContent = '0/1000';
-        characterCounter.style.color = '#999';
-        
-        // Ocultar mensaje de éxito
-        successMessage.style.display = 'none';
-    });
-
-    // Prevenir pegado de espacios en email
-    emailInput.addEventListener('paste', function(e) {
-        setTimeout(() => {
-            this.value = this.value.trim();
-        }, 0);
-    });
-
-    // Auto-formato para teléfono
-    telefonoInput.addEventListener('input', function(e) {
-        let value = this.value.replace(/\D/g, ''); // Eliminar todo excepto números
-        
-        // Si empieza con 51, agregar +
-        if (value.startsWith('51')) {
-            value = '+' + value;
-        }
-        
-        // Formatear como +51 999 999 999
-        if (value.startsWith('+51')) {
-            const numbers = value.substring(3);
-            if (numbers.length <= 3) {
-                value = '+51 ' + numbers;
-            } else if (numbers.length <= 6) {
-                value = '+51 ' + numbers.substring(0, 3) + ' ' + numbers.substring(3);
-            } else {
-                value = '+51 ' + numbers.substring(0, 3) + ' ' + numbers.substring(3, 6) + ' ' + numbers.substring(6, 9);
+            
+            if (successMessage) {
+                successMessage.style.display = 'none';
             }
-        }
-        
-        this.value = value;
-    });
+            
+            console.log('🧹 Formulario limpiado');
+        });
+    }
 });
 
-// Agregar estilos para el spinner de carga
+// Estilos para spinner
 const style = document.createElement('style');
 style.textContent = `
     .spin {
@@ -394,12 +439,8 @@ style.textContent = `
     }
     
     @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 `;
 document.head.appendChild(style);
