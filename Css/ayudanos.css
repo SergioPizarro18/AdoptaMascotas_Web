@@ -472,11 +472,11 @@ body {
 
 .plan-content {
     padding: 2rem 2rem 2.5rem;
-    background: linear-gradient(180deg, transparent 0%, #264653 100%);
+    background: linear-gradient(180deg, #b8e8e0 0%, #2A9D8F 35%, #264653 100%);
     text-align: center;
     color: white;
+    position: relative;
 }
-
 .plan-name {
     font-size: 1.8rem;
     font-weight: 700;
