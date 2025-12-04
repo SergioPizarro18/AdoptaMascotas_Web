@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - COLITAS</title>
+    <link rel="stylesheet" href="/Css/preguntas-frecuentes.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="/Inicio.html" class="logo">
+            <img src="https://images.unsplash.com/photo-1764738369536-c51428a2544d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Colitas Logo" class="logo-image-large">
+            <span class="logo-text">COLITAS</span>
+        </a>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="/Adopta.html">Adopta</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Adopta.html" onclick="filterByType('Perro'); return false;">Perritos</a></li>
+                        <li><a href="/Adopta.html" onclick="filterByType('Gato'); return false;">Gatitos</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Nosotros.html">Nosotros</a></li>
+                <li><a href="/Novedades.html">Novedades</a></li>
+                <li><a href="/Consultas.html" class="active">Preguntas Frecuentes</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-buttons">
+            <a href="/Ayudanos.html" class="btn-help">
+                <svg class="btn-help-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>AYUDA AQUÍ</span>
+                <span class="btn-help-shine"></span>
+            </a>
+            <button class="btn-login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </button>
+            <div class="help-dropdown">
+                <button class="btn-help-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </button>
+                <div class="help-dropdown-menu">
+                    <a href="/centro-ayuda.html" class="help-dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        Centro de Ayuda
+                    </a>
+                    <a href="/contactanos.html" class="help-dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav">
+        <div class="breadcrumb-container">
+            <a href="/Inicio.html" class="breadcrumb-link">Inicio</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Preguntas Frecuentes</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">Preguntas Frecuentes</h1>
+        <p class="hero-subtitle">Encuentra respuestas a las preguntas más comunes sobre adopción, cuidado de mascotas y cómo puedes ayudar a nuestros peluditos</p>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" class="search-input" placeholder="Busca tu pregunta aquí..." id="searchInput">
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <h2 class="section-title">Explora por categoría</h2>
+        <div class="categories-grid">
+            <div class="category-card" onclick="scrollToCategory('adopcion')">
+                <div class="category-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <h3 class="category-title">Adopción</h3>
+                <p class="category-count">5 preguntas</p>
+            </div>
+
+            <div class="category-card" onclick="scrollToCategory('cuidados')">
+                <div class="category-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+                <h3 class="category-title">Cuidados</h3>
+                <p class="category-count">4 preguntas</p>
+            </div>
+
+            <div class="category-card" onclick="scrollToCategory('donaciones')">
+                <div class="category-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <h3 class="category-title">Donaciones</h3>
+                <p class="category-count">3 preguntas</p>
+            </div>
+
+            <div class="category-card" onclick="scrollToCategory('voluntariado')">
+                <div class="category-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="category-title">Voluntariado</h3>
+                <p class="category-count">3 preguntas</p>
+            </div>
+        </div>
+
+        <!-- FAQ Section - Adopción -->
+        <div class="faq-section" id="adopcion">
+            <h2 class="faq-category-title">Adopción</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Cómo puedo adoptar un peludito de COLITAS?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>El proceso de adopción en COLITAS es muy sencillo:</p>
+                        <p><strong>1. Explora:</strong> Visita nuestra sección de "Adopta" y conoce a nuestros peluditos disponibles.</p>
+                        <p><strong>2. Llena el formulario:</strong> Completa el formulario de adopción con tus datos y preferencias.</p>
+                        <p><strong>3. Entrevista:</strong> Nuestro equipo se pondrá en contacto contigo para una breve entrevista y conocerte mejor.</p>
+                        <p><strong>4. Visita:</strong> Programa una visita a nuestro albergue para conocer a tu futuro compañero.</p>
+                        <p><strong>5. ¡Adopta!</strong> Si todo está en orden, completa el proceso de adopción y lleva a casa a tu nuevo amigo.</p>
+                        <p>Para más información, escríbenos a <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Cuál es el costo de adopción?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>COLITAS solicita una contribución de <strong>S/. 190.00</strong> por adopción.</p>
+                        <div class="faq-highlight">
+                            <p><strong>Esta contribución incluye:</strong></p>
+                            <p>✓ Hemograma completo<br>
+                            ✓ Traslado del peludito del albergue al punto de entrega<br>
+                            ✓ Baño y Kit de adopción con productos<br>
+                            ✓ Mascota vacunada, esterilizada y limpia</p>
+                        </div>
+                        <p>Este aporte nos ayuda a mantener la calidad de nuestros servicios y permite que otros peluditos puedan ser preparados para encontrar su hogar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Qué requisitos necesito para adoptar?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Los requisitos básicos para adoptar son:</p>
+                        <p>• Ser mayor de 18 años<br>
+                        • Tener un espacio adecuado para la mascota<br>
+                        • Contar con recursos económicos para su cuidado<br>
+                        • Compromiso de brindarle amor y atención<br>
+                        • Firmar un compromiso de seguimiento</p>
+                        <p>Nos enfocamos en encontrar familias responsables que puedan brindar un hogar permanente y amoroso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Puedo devolver una mascota si no funciona?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Entendemos que pueden surgir situaciones imprevistas. Si por alguna razón no puedes continuar cuidando a tu mascota adoptada, <strong>COLITAS siempre recibirá de vuelta al peludito</strong>.</p>
+                        <p>Sin embargo, te pedimos que consideres la adopción como un compromiso de largo plazo. Nuestro equipo está disponible para ayudarte con cualquier dificultad durante el proceso de adaptación.</p>
+                        <div class="faq-highlight">
+                            <p><strong>Consejo:</strong> El período de adaptación puede tomar entre 2-4 semanas. ¡Ten paciencia y mantén la comunicación con nosotros!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">Tengo un perro rescatado, ¿pueden ayudarme?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Por supuesto! COLITAS trabaja con <strong>21 casos sociales independientes</strong> además de nuestros albergues afiliados.</p>
+                        <p>Si has rescatado un perrito y necesitas ayuda, podemos apoyarte de varias formas:</p>
+                        <p>• Atención veterinaria a precios especiales<br>
+                        • Conexión con redes de adopción<br>
+                        • Asesoría sobre cuidados básicos<br>
+                        • Apoyo con publicación en nuestras redes sociales</p>
+                        <div class="faq-highlight">
+                            <p>Envíanos los detalles del caso a <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a> con fotos y descripción del peludito.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section - Cuidados -->
+        <div class="faq-section" id="cuidados">
+            <h2 class="faq-category-title">Cuidados y Salud</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Qué cuidados básicos necesita mi mascota adoptada?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Los cuidados básicos incluyen:</p>
+                        <p><strong>Alimentación:</strong> Comida de calidad 2-3 veces al día según su edad y tamaño<br>
+                        <strong>Agua fresca:</strong> Siempre disponible<br>
+                        <strong>Ejercicio:</strong> Paseos diarios de al menos 30 minutos<br>
+                        <strong>Higiene:</strong> Baños mensuales y cepillado regular<br>
+                        <strong>Salud:</strong> Visitas veterinarias cada 6 meses y vacunas al día</p>
+                        <p>Todas nuestras mascotas son entregadas vacunadas y esterilizadas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Las mascotas vienen esterilizadas?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Sí, todas nuestras mascotas son <strong>esterilizadas antes de la adopción</strong>. Esto es parte de nuestro compromiso con el control poblacional responsable.</p>
+                        <p>La esterilización incluye:</p>
+                        <p>✓ Procedimiento quirúrgico completo<br>
+                        ✓ Medicamentos post-operatorios<br>
+                        ✓ Seguimiento veterinario<br>
+                        ✓ Certificado de esterilización</p>
+                        <p>La esterilización también ayuda a prevenir enfermedades y mejora el comportamiento de las mascotas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Ofrecen seguimiento post-adopción?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Absolutamente! En COLITAS nos importa el bienestar a largo plazo de nuestros peluditos.</p>
+                        <p>Nuestro seguimiento incluye:</p>
+                        <p>• Llamadas de seguimiento al mes, 3 meses y 6 meses<br>
+                        • Asesoría gratuita sobre comportamiento y cuidados<br>
+                        • Grupo de WhatsApp para familias adoptantes<br>
+                        • Descuentos en servicios veterinarios con nuestros aliados</p>
+                        <div class="faq-highlight">
+                            <p>Siempre estaremos disponibles para ayudarte con cualquier duda o inquietud sobre tu nuevo compañero.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Qué hago si mi mascota se enferma después de la adopción?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Contáctanos inmediatamente. Aunque todas nuestras mascotas son revisadas antes de la entrega, pueden surgir situaciones de salud.</p>
+                        <p>Te recomendamos:</p>
+                        <p>1. <strong>Comunicarte con nosotros:</strong> Llámanos al +51 930 213 687<br>
+                        2. <strong>Visitar un veterinario:</strong> Tenemos convenios con clínicas aliadas<br>
+                        3. <strong>Seguir indicaciones médicas:</strong> Te apoyaremos en el tratamiento</p>
+                        <p>Durante los primeros 30 días, ofrecemos apoyo especial para cualquier emergencia de salud.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section - Donaciones -->
+        <div class="faq-section" id="donaciones">
+            <h2 class="faq-category-title">Donaciones y Ayuda</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Cómo puedo donar a COLITAS?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Hay muchas formas de ayudar a nuestros <strong>+750 peluditos</strong>:</p>
+                        <p><strong>Donaciones monetarias:</strong> A través de nuestra página web o transferencia bancaria<br>
+                        <strong>Donaciones en especie:</strong> Alimento, medicinas, mantas, juguetes<br>
+                        <strong>Tiempo:</strong> Voluntariado en nuestros albergues<br>
+                        <strong>Difusión:</strong> Comparte nuestras publicaciones en redes sociales</p>
+                        <div class="faq-highlight">
+                            <p>Visita nuestra sección <strong>"AYUDA AQUÍ"</strong> para más información sobre cómo contribuir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿A dónde va mi donación?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Tus donaciones impactan directamente en:</p>
+                        <p>• <strong>Alimentación:</strong> Comida de calidad para más de 750 peluditos mensualmente<br>
+                        • <strong>Atención veterinaria:</strong> Vacunas, esterilizaciones, tratamientos<br>
+                        • <strong>Infraestructura:</strong> Mejoras en nuestros 7 albergues afiliados<br>
+                        • <strong>Campañas:</strong> Vacunación y rescate de emergencia<br>
+                        • <strong>Casos sociales:</strong> Apoyo a 21 casos independientes</p>
+                        <p>Publicamos informes mensuales de transparencia en nuestra sección de Novedades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Puedo apadrinar a un peludito sin adoptarlo?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Sí! El programa de apadrinamiento es perfecto si no puedes adoptar pero quieres ayudar.</p>
+                        <p><strong>Como padrino recibirás:</strong></p>
+                        <p>✓ Actualizaciones mensuales con fotos y videos de tu ahijado<br>
+                        ✓ Certificado de apadrinamiento<br>
+                        ✓ Visitas programadas al albergue<br>
+                        ✓ Reconocimiento en nuestras redes sociales</p>
+                        <p>El apadrinamiento mensual ayuda a cubrir los gastos de alimentación y cuidados médicos del peludito que elijas.</p>
+                        <p>Contacta a <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a> para más información.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section - Voluntariado -->
+        <div class="faq-section" id="voluntariado">
+            <h2 class="faq-category-title">Voluntariado</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Cómo puedo ser voluntario en COLITAS?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Nos encantaría contar contigo! Hay diferentes formas de ser voluntario:</p>
+                        <p><strong>En los albergues:</strong> Ayuda con alimentación, limpieza y socialización<br>
+                        <strong>Eventos:</strong> Participa en campañas de adopción y recaudación<br>
+                        <strong>Marketing:</strong> Crea contenido para redes sociales<br>
+                        <strong>Transporte:</strong> Ayuda con traslados de peluditos a veterinarias o adopciones</p>
+                        <p>Requisitos: Ser mayor de 18 años (o 16+ con autorización de padres) y compromiso mínimo de 4 horas mensuales.</p>
+                        <p>Envía un correo a <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a> con tu disponibilidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">¿Necesito experiencia previa con animales?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡No necesariamente! Lo más importante es tu amor por los animales y ganas de ayudar.</p>
+                        <p>Ofrecemos:</p>
+                        <p>• Capacitación inicial sobre manejo de animales<br>
+                        • Supervisión constante de voluntarios experimentados<br>
+                        • Talleres mensuales sobre cuidado animal<br>
+                        • Materiales educativos</p>
+                        <div class="faq-highlight">
+                            <p>Si tienes experiencia veterinaria, en adiestramiento o rescate, ¡todavía mejor! Siempre necesitamos voluntarios especializados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-question-text">Mi empresa quiere ayudar, ¿qué opciones tenemos?</span>
+                    <div class="faq-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Excelente! Ofrecemos tres tipos de alianzas corporativas:</p>
+                        <p><strong>1. Alianza de Ayuda:</strong> Donación de productos de primera necesidad, campañas de vacunación y atenciones veterinarias. Contacto: <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a></p>
+                        <p><strong>2. Alianza Comercial:</strong> Patrocinio, productos solidarios o partnership solidario. Contacto: <a href="mailto:alvaro@colitas.pe">alvaro@colitas.pe</a></p>
+                        <p><strong>3. Alianza de Marketing:</strong> Eventos corporativos, material audiovisual, merchandising. Contacto: <a href="mailto:marketing@colitas.pe">marketing@colitas.pe</a></p>
+                        <div class="faq-highlight">
+                            <p>Las empresas aliadas obtienen reconocimiento en nuestras plataformas digitales y eventos, además de la satisfacción de contribuir al bienestar de +750 peluditos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <h2 class="contact-cta-title">¿No encontraste tu respuesta?</h2>
+            <p class="contact-cta-text">Nuestro equipo está listo para ayudarte con cualquier duda</p>
+            <div class="contact-cta-buttons">
+                <a href="/contactanos.html" class="cta-button cta-button-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Contáctanos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre COLITAS</h3>
+                <p>ONG Peruana dedicada al rescate, rehabilitación y adopción de mascotas. Impactamos mensualmente en la vida de +750 peluditos en Lima y provincia.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <p><a href="/Adopta.html" style="color: white; text-decoration: none; opacity: 0.9;">Adopta</a></p>
+                <p><a href="/Ayudanos.html" style="color: white; text-decoration: none; opacity: 0.9;">Ayúdanos</a></p>
+                <p><a href="/Nosotros.html" style="color: white; text-decoration: none; opacity: 0.9;">Nosotros</a></p>
+                <p><a href="/Novedades.html" style="color: white; text-decoration: none; opacity: 0.9;">Novedades</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: equipo@colitas.pe</p>
+                <p>Teléfono: +51 930 213 687</p>
+                <p>Lima, Perú</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 COLITAS - Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/Js/preguntas-frecuentes.js"></script>
+</body>
+</html>
