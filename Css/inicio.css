@@ -656,6 +656,7 @@ body {
 }
 
 /* =============== MODAL LOGIN =============== */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -663,25 +664,25 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.55);
-    display: none;                 /* Oculto por defecto */
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
 
-/* --- Caja del modal --- */
 .modal-box {
     background: white;
     width: 90%;
-    max-width: 400px;
+    max-width: 420px;
     padding: 2rem;
-    border-radius: 14px;
+    border-radius: 16px;
     position: relative;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    animation: modalFade 0.25s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    animation: modalFade 0.3s ease;
+    max-height: 95vh;
+    overflow-y: auto;
 }
 
-/* --- Botón X (cerrar) --- */
 .modal-close {
     position: absolute;
     top: 12px;
@@ -692,6 +693,7 @@ body {
     cursor: pointer;
     color: #555;
     transition: 0.15s ease;
+    z-index: 10;
 }
 
 .modal-close:hover {
@@ -699,34 +701,155 @@ body {
     transform: scale(1.15);
 }
 
-/* --- Animación del modal --- */
 @keyframes modalFade {
     from { opacity: 0; transform: translateY(-20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Título WUF --- */
 .modal-title {
     text-align: center;
     font-size: 1.8rem;
-    color: #2A9D8F;
-    margin-bottom: 0.5rem;
+    font-weight: 800;
+    color: #264653;
+    margin-bottom: 0.25rem;
 }
 
-/* --- Subtítulo --- */
 .modal-subtitle {
-    display: block;
     text-align: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #264653;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.8rem;
+}
+
+/* Formulario */
+.login-form {
     margin-bottom: 1.5rem;
 }
 
-/* --- Botones de login --- */
+.login-form .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.login-form .form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 0.5rem;
+}
+
+.login-form .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-form .input-icon {
+    position: absolute;
+    left: 1rem;
+    color: #999;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.login-form .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+}
+
+/* Input de contraseña con espacio para el botón de ojo */
+.login-form .form-input.password-field {
+    padding-right: 3.5rem;
+}
+
+.login-form .form-input:focus {
+    outline: none;
+    border-color: #2A9D8F;
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+}
+
+.login-form .form-input::placeholder {
+    color: #999;
+}
+
+/* Botón para mostrar/ocultar contraseña en login */
+.login-form .toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 0.5rem;
+    z-index: 10;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .toggle-password:hover {
+    color: #2A9D8F;
+}
+
+.login-form .toggle-password svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+/* Mensajes de error */
+.login-form .error-message {
+    display: none;
+    color: #E63946;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+    line-height: 1.4;
+}
+
+.login-form .error-message.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #2A9D8F;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Botones */
 .modal-btn {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.875rem;
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -735,62 +858,112 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    margin-bottom: 0.9rem;
-    transition: 0.25s ease;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
 }
 
-.modal-btn img {
-    width: 22px;
-    height: 22px;
+.modal-btn svg {
+    flex-shrink: 0;
 }
 
-/* Google */
+.modal-btn.primary {
+    background: #2A9D8F;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.modal-btn.primary:hover {
+    background: #23877a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+}
+
 .modal-btn.google {
     background: #ffffff;
     border: 2px solid #dadada;
+    color: #333;
 }
 
 .modal-btn.google:hover {
     background: #f4f4f4;
+    border-color: #999;
 }
 
-/* Facebook */
 .modal-btn.facebook {
-    background: #1877f2;
-    color: white;
+    background: #ffffff;
+    border: 2px solid #dadada;
+    color: #333;
 }
 
 .modal-btn.facebook:hover {
-    background: #1468d4;
+    background: #f4f4f4;
+    border-color: #999;
 }
 
-/* Email */
-.modal-btn.email {
-    background: #2A9D8F;
-    color: white;
+/* Separador */
+.separator {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
 }
 
-.modal-btn.email:hover {
-    background: #23877a;
+.separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #E0E0E0;
 }
 
-/* --- Texto de registro --- */
+.separator span {
+    position: relative;
+    background: white;
+    padding: 0 1rem;
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Texto de registro */
 .modal-register {
     text-align: center;
-    margin-top: 1rem;
-    color: #555;
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
 }
 
-.modal-register .modal-link {
+.modal-link {
     color: #2A9D8F;
     font-weight: 600;
-    margin-left: 4px;
     text-decoration: none;
 }
 
-.modal-register .modal-link:hover {
+.modal-link:hover {
     text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .modal-box {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+    
+    .login-form .form-input {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
 }
 
 /* =============== WHATSAPP FLOAT =============== */
@@ -1237,11 +1410,18 @@ body {
     color: #555;
     transition: 0.15s ease;
     z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
 }
 
 .modal-close:hover {
-    color: #000;
-    transform: scale(1.15);
+    color: #264653;
+    background: #f0f0f0;
+    transform: scale(1.1);
 }
 
 @keyframes modalFade {
