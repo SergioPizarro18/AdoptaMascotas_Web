@@ -1,7 +1,7 @@
-function selectPlan(planName) {
-    alert(`¡Gracias por elegir el Plan ${planName}! En breve te contactaremos para completar tu suscripción.`);
+function redirectToSubscription(planType) {
+    // planType puede ser: 'basico', 'estandar', 'premium'
+    window.location.href = `/pago.html?type=subscription&plan=${planType}`;
 }
-
 
 // Toggle del menú de ayuda con click
 document.addEventListener('DOMContentLoaded', function() {

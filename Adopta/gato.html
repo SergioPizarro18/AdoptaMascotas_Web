@@ -203,7 +203,7 @@
                     </ul>
                 </div>
 
-                <button class="btn-continue">Continuar con la Adopción</button>
+                <button class="btn-continue" onclick="redirectToPayment('adoption')">Continuar con la Adopción</button>
             </div>
         </div>
     </div>
@@ -288,6 +288,16 @@
         </div>
     </footer>
 
-    <script src="/Js/detalle-adopcion.js"></script>
+    <script>
+        function redirectToPayment(type) {
+        // Obtener información de la mascota de la página actual
+        const petName = document.querySelector('.pet-title').textContent;
+        const petImage = document.getElementById('mainImage').src;
+        // Redirigir a la página de pago con parámetros
+        window.location.href = `/pago.html?type=${type}&pet=${encodeURIComponent(petName)}&image=${encodeURIComponent(petImage)}`;}
+    </script>
+
+<script src="/Js/detalle-adopcion.js"></script>
+
 </body>
 </html>
