@@ -1,5 +1,3 @@
-// ===== MANEJO DEL FORMULARIO DE REGISTRO CON HEURÍSTICAS DE NIELSEN =====
-
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
@@ -14,9 +12,6 @@ if (registerForm) {
     const emailError = document.getElementById('emailError');
     const fechaError = document.getElementById('fechaError');
     const passwordError = document.getElementById('passwordError');
-
-    // ===== HEURÍSTICA 1: Visibilidad del estado del sistema =====
-    // Validación en tiempo real y feedback visual
 
     // Validar usuario (mínimo 3 caracteres)
     if (usuarioInput && usuarioError) {
