@@ -1,24 +1,195 @@
-// Toggle del menú de ayuda
+// ============================================
+// ESPERAR A QUE EL DOM ESTÉ COMPLETAMENTE CARGADO
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // MODAL LOGIN
+    // ============================================
+    const loginBtn = document.querySelector(".btn-login");
+    const modal = document.getElementById("loginModal");
+    const closeBtn = document.querySelector(".modal-close");
+
+    if (loginBtn && modal && closeBtn) {
+        // Abrir modal
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal con X
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Cerrar modal haciendo clic en el fondo sombreado
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal.style.display === "flex") {
+                modal.style.display = "none";
+            }
+        });
+    }
+
+    // ============================================
+    // CHATBOT
+    // ============================================
+    const chatButton = document.getElementById('chatButton');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose = document.getElementById('chatClose');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatBody = document.getElementById('chatBody');
+    const chatBadge = document.querySelector('.chat-badge');
+
+    if (chatButton && chatWindow && chatClose && chatInput && chatSend && chatBody) {
+        // Abrir chat
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.add('active');
+            chatButton.style.display = 'none';
+            if (chatBadge) {
+                chatBadge.style.display = 'none';
+            }
+        });
+
+        // Cerrar chat
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+            chatButton.style.display = 'flex';
+        });
+
+        // Función para enviar mensaje
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            
+            if (message === '') return;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', 'sent');
+            
+            const currentTime = new Date().toLocaleTimeString('es-ES', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <p>${message}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+                <div class="message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            chatInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+            
+            setTimeout(() => {
+                autoReply();
+            }, 1500);
+        }
+
+        // Función para respuesta automática
+        function autoReply() {
+            const replies = [
+                '¡Gracias por tu mensaje! Un agente te responderá pronto. 😊',
+                'Estamos procesando tu consulta. ¿Hay algo más en lo que pueda ayudarte?',
+                '¡Perfecto! Te contactaremos a la brevedad. 🐾',
+                'Entendido. ¿Necesitas información sobre alguna mascota en particular?',
+                'Gracias por contactarnos. ¿Te gustaría conocer nuestro proceso de adopción?'
+            ];
+            
+            const randomReply = replies[Math.floor(Math.random() * replies.length)];
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', 'received');
+            
+            const currentTime = new Date().toLocaleTimeString('es-ES', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="message-content">
+                    <p>${randomReply}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Enviar con botón
+        chatSend.addEventListener('click', sendMessage);
+
+        // Enviar con Enter
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Simular notificación (solo para demo)
+        setTimeout(() => {
+            if (!chatWindow.classList.contains('active') && chatBadge) {
+                const currentBadge = parseInt(chatBadge.textContent) || 0;
+                chatBadge.textContent = currentBadge + 1;
+                chatBadge.style.display = 'flex';
+                
+                chatButton.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    chatButton.style.animation = '';
+                }, 500);
+            }
+        }, 5000);
+    }
+
+    // ============================================
+    // MENÚ DROPDOWN DE AYUDA
+    // ============================================
     const helpButton = document.querySelector('.btn-help-circle');
     const helpMenu = document.querySelector('.help-dropdown-menu');
+    const helpDropdown = document.querySelector('.help-dropdown');
 
     if (helpButton && helpMenu) {
         helpButton.addEventListener('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
             helpMenu.classList.toggle('show');
         });
 
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.help-dropdown')) {
+            if (helpDropdown && !helpDropdown.contains(e.target)) {
                 helpMenu.classList.remove('show');
             }
         });
-    }
-});
 
-// Formulario de contacto
-document.addEventListener('DOMContentLoaded', function() {
+        helpMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+
+    // ============================================
+    // FORMULARIO DE CONTACTO
+    // ============================================
     const form = document.getElementById('contactForm');
     
     if (!form) {
@@ -35,7 +206,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const successMessage = document.getElementById('successMessage');
     const characterCounter = document.getElementById('mensaje-counter');
 
-    // Contador de caracteres
+    // ============================================
+    // CONTADOR DE CARACTERES
+    // ============================================
     if (mensajeTextarea && characterCounter) {
         mensajeTextarea.addEventListener('input', function() {
             const length = this.value.length;
@@ -53,7 +226,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Auto-formato para teléfono
+    // ============================================
+    // AUTO-FORMATO PARA TELÉFONO
+    // ============================================
     if (telefonoInput) {
         telefonoInput.addEventListener('input', function() {
             let value = this.value.replace(/\D/g, '');
@@ -77,7 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Validación en tiempo real para cada campo
+    // ============================================
+    // VALIDACIÓN EN TIEMPO REAL
+    // ============================================
     if (nombreInput) {
         nombreInput.addEventListener('blur', validateNombre);
         nombreInput.addEventListener('input', function() {
@@ -122,7 +299,9 @@ document.addEventListener('DOMContentLoaded', function() {
         privacidadCheckbox.addEventListener('change', validatePrivacidad);
     }
 
-    // Funciones de validación
+    // ============================================
+    // FUNCIONES DE VALIDACIÓN
+    // ============================================
     function validateNombre() {
         if (!nombreInput) return true;
         
@@ -282,7 +461,9 @@ document.addEventListener('DOMContentLoaded', function() {
         input.removeAttribute('aria-invalid');
     }
 
+    // ============================================
     // ENVÍO DEL FORMULARIO
+    // ============================================
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -402,7 +583,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1500);
     });
 
-    // Botón reset
+    // ============================================
+    // BOTÓN RESET
+    // ============================================
     const resetButton = form.querySelector('button[type="reset"]');
     if (resetButton) {
         resetButton.addEventListener('click', function() {
@@ -429,9 +612,23 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('🧹 Formulario limpiado');
         });
     }
-});
 
-// Estilos para spinner
+}); // FIN DEL DOMContentLoaded
+
+// ============================================
+// FUNCIONES GLOBALES (fuera del DOMContentLoaded)
+// ============================================
+
+/**
+ * Función para filtrar por tipo (compatibilidad con navegación)
+ */
+function filterByType(type) {
+    console.log('Filtrar por tipo:', type);
+}
+
+// ============================================
+// CSS DINÁMICO PARA ANIMACIONES
+// ============================================
 const style = document.createElement('style');
 style.textContent = `
     .spin {
@@ -441,6 +638,12 @@ style.textContent = `
     @keyframes spin {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
+    }
+    
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
     }
 `;
 document.head.appendChild(style);

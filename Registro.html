@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Botón Volver al Inicio -->
-    <a href="/Inicio.html" class="btn-back">
+    <a href="/Inicio.html" class="btn-back" aria-label="Volver al inicio">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
@@ -28,12 +28,17 @@
                 <h1 class="register-title">Registro</h1>
             </div>
 
-            <!-- Formulario de Registro -->
-            <form class="register-form" id="registerForm">
+            <!-- Texto de ayuda inicial - Heurística: Ayuda y documentación -->
+            <p class="form-help-text" style="margin-bottom: 1.5rem;">
+                Completa todos los campos para crear tu cuenta en Colitas
+            </p>
 
-                <!-- Campo Usuario -->
+            <!-- Formulario de Registro -->
+            <form class="register-form" id="registerForm" novalidate>
+
+                <!-- Campo Usuario - Heurística: Prevención de errores -->
                 <div class="form-group">
-                    <label class="form-label">Usuario</label>
+                    <label class="form-label required">Usuario</label>
                     <div class="input-wrapper">
                         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -41,13 +46,22 @@
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
-                        <input type="text" class="form-input" placeholder="Usuario" required>
+                        <input 
+                            type="text" 
+                            class="form-input" 
+                            placeholder="Ingresa tu usuario" 
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            aria-label="Usuario"
+                            autocomplete="username">
                     </div>
+                    <div class="error-message" id="usuarioError"></div>
                 </div>
 
                 <!-- Campo Correo Electrónico -->
                 <div class="form-group">
-                    <label class="form-label">Correo electrónico</label>
+                    <label class="form-label required">Correo electrónico</label>
                     <div class="input-wrapper">
                         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -55,13 +69,20 @@
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <input type="email" class="form-input" placeholder="email@example.com" required>
+                        <input 
+                            type="email" 
+                            class="form-input" 
+                            placeholder="email@ejemplo.com" 
+                            required
+                            aria-label="Correo electrónico"
+                            autocomplete="email">
                     </div>
+                    <div class="error-message" id="emailError"></div>
                 </div>
 
                 <!-- Campo Fecha de Nacimiento -->
                 <div class="form-group">
-                    <label class="form-label">Fecha de nacimiento</label>
+                    <label class="form-label required">Fecha de nacimiento</label>
                     <div class="input-wrapper">
                         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -71,13 +92,19 @@
                             <line x1="8" y1="2" x2="8" y2="6"></line>
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
-                        <input type="date" class="form-input" placeholder="dd/mm/aa" required>
+                        <input 
+                            type="date" 
+                            class="form-input" 
+                            required
+                            aria-label="Fecha de nacimiento"
+                            autocomplete="bday">
                     </div>
+                    <div class="error-message" id="fechaError"></div>
                 </div>
 
-                <!-- Campo Contraseña -->
+                <!-- Campo Contraseña con indicador de fortaleza -->
                 <div class="form-group">
-                    <label class="form-label">Contraseña</label>
+                    <label class="form-label required">Contraseña</label>
                     <div class="input-wrapper">
                         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -85,13 +112,44 @@
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                         </svg>
-                        <input type="password" class="form-input" placeholder="Contraseña" required>
+                        <input 
+                            type="password" 
+                            class="form-input" 
+                            placeholder="Crea una contraseña segura" 
+                            required
+                            minlength="8"
+                            aria-label="Contraseña"
+                            autocomplete="new-password">
+                        <!-- El botón de mostrar/ocultar se agrega con JS -->
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                    <!-- El indicador de fortaleza se crea dinámicamente con JS -->
+                </div>
+
+                <!-- Términos y condiciones - Heurística: Flexibilidad -->
+                <div class="terms-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms" class="checkbox-label">
+                            Acepto los <a href="#" onclick="return false;">términos y condiciones</a> 
+                            y la <a href="#" onclick="return false;">política de privacidad</a>
+                        </label>
                     </div>
                 </div>
 
                 <!-- Botón Registrarse -->
-                <button type="submit" class="btn-register">Registrarse</button>
+                <button type="submit" class="btn-register">
+                    <span class="btn-text">Registrarse</span>
+                </button>
             </form>
+
+            <!-- Footer con enlace a login -->
+            <div class="form-help-text">
+                ¿Ya tienes una cuenta? 
+                <a href="/Inicio.html?openLogin=true" style="color: #2A9D8F; font-weight: 600; text-decoration: none;">
+                    Inicia sesión aquí
+                </a>
+            </div>
         </div>
     </div>
 

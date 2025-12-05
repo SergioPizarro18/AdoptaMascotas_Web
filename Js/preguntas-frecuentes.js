@@ -1,6 +1,167 @@
-// Esperar a que el DOM esté completamente cargado
+// ============================================
+// ESPERAR A QUE EL DOM ESTÉ COMPLETAMENTE CARGADO
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     
+    // ============================================
+    // MODAL LOGIN
+    // ============================================
+    const loginBtn = document.querySelector(".btn-login");
+    const modal = document.getElementById("loginModal");
+    const closeBtn = document.querySelector(".modal-close");
+
+    if (loginBtn && modal && closeBtn) {
+        // Abrir modal
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal con X
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Cerrar modal haciendo clic en el fondo sombreado
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal.style.display === "flex") {
+                modal.style.display = "none";
+            }
+        });
+    }
+
+    // ============================================
+    // CHATBOT
+    // ============================================
+    const chatButton = document.getElementById('chatButton');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose = document.getElementById('chatClose');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatBody = document.getElementById('chatBody');
+    const chatBadge = document.querySelector('.chat-badge');
+
+    if (chatButton && chatWindow && chatClose && chatInput && chatSend && chatBody) {
+        // Abrir chat
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.add('active');
+            chatButton.style.display = 'none';
+            if (chatBadge) {
+                chatBadge.style.display = 'none';
+            }
+        });
+
+        // Cerrar chat
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+            chatButton.style.display = 'flex';
+        });
+
+        // Función para enviar mensaje
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            
+            if (message === '') return;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', 'sent');
+            
+            const currentTime = new Date().toLocaleTimeString('es-ES', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <p>${message}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+                <div class="message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            chatInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+            
+            setTimeout(() => {
+                autoReply();
+            }, 1500);
+        }
+
+        // Función para respuesta automática
+        function autoReply() {
+            const replies = [
+                '¡Gracias por tu mensaje! Un agente te responderá pronto. 😊',
+                'Estamos procesando tu consulta. ¿Hay algo más en lo que pueda ayudarte?',
+                '¡Perfecto! Te contactaremos a la brevedad. 🐾',
+                'Entendido. ¿Necesitas información sobre alguna mascota en particular?',
+                'Gracias por contactarnos. ¿Te gustaría conocer nuestro proceso de adopción?'
+            ];
+            
+            const randomReply = replies[Math.floor(Math.random() * replies.length)];
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', 'received');
+            
+            const currentTime = new Date().toLocaleTimeString('es-ES', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div class="message-content">
+                    <p>${randomReply}</p>
+                    <span class="message-time">${currentTime}</span>
+                </div>
+            `;
+            
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Enviar con botón
+        chatSend.addEventListener('click', sendMessage);
+
+        // Enviar con Enter
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Simular notificación (solo para demo)
+        setTimeout(() => {
+            if (!chatWindow.classList.contains('active') && chatBadge) {
+                const currentBadge = parseInt(chatBadge.textContent) || 0;
+                chatBadge.textContent = currentBadge + 1;
+                chatBadge.style.display = 'flex';
+                
+                chatButton.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    chatButton.style.animation = '';
+                }, 500);
+            }
+        }, 5000);
+    }
+
     // ============================================
     // FUNCIONALIDAD DEL MENÚ DROPDOWN DE AYUDA
     // ============================================
@@ -9,20 +170,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const helpMenu = document.querySelector('.help-dropdown-menu');
 
     if (helpButton && helpMenu) {
-        // Toggle del menú al hacer click en el botón
         helpButton.addEventListener('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
             helpMenu.classList.toggle('show');
         });
 
-        // Cerrar el menú al hacer click fuera de él
         document.addEventListener('click', function(e) {
-            if (!helpDropdown.contains(e.target)) {
+            if (helpDropdown && !helpDropdown.contains(e.target)) {
                 helpMenu.classList.remove('show');
             }
         });
 
-        // Prevenir que el menú se cierre al hacer click dentro de él
         helpMenu.addEventListener('click', function(e) {
             e.stopPropagation();
         });
@@ -47,21 +206,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.style.display = 'block';
                     hasResults = true;
                     
-                    // Si la búsqueda tiene más de 2 caracteres, expandir automáticamente
                     if (searchTerm.length > 2) {
                         item.classList.add('active');
                     }
                 } else {
                     item.style.display = searchTerm.length > 2 ? 'none' : 'block';
                     
-                    // Si no hay término de búsqueda, colapsar todas
                     if (searchTerm.length === 0) {
                         item.classList.remove('active');
                     }
                 }
             });
 
-            // Mostrar u ocultar las secciones de categorías si no hay resultados
             const faqSections = document.querySelectorAll('.faq-section');
             faqSections.forEach(section => {
                 const visibleItems = section.querySelectorAll('.faq-item[style*="display: block"], .faq-item:not([style*="display: none"])');
@@ -73,7 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Limpiar búsqueda con tecla Escape
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 searchInput.value = '';
@@ -100,7 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observar elementos que deben animarse
     const animatedElements = document.querySelectorAll('.category-card, .faq-item');
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
@@ -115,7 +269,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryCards = document.querySelectorAll('.category-card');
     categoryCards.forEach(card => {
         card.addEventListener('click', function() {
-            // Agregar efecto de click
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
@@ -128,17 +281,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach((question, index) => {
-        // Hacer que sea accesible por teclado
         question.setAttribute('tabindex', '0');
         question.setAttribute('role', 'button');
         question.setAttribute('aria-expanded', 'false');
         question.setAttribute('aria-controls', `faq-answer-${index}`);
         
         const answer = question.nextElementSibling;
-        answer.setAttribute('id', `faq-answer-${index}`);
-        answer.setAttribute('role', 'region');
+        if (answer) {
+            answer.setAttribute('id', `faq-answer-${index}`);
+            answer.setAttribute('role', 'region');
+        }
         
-        // Permitir abrir/cerrar con Enter o Espacio
         question.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -156,32 +309,13 @@ document.addEventListener('DOMContentLoaded', function() {
         question.addEventListener('click', function() {
             const questionText = this.querySelector('.faq-question-text').textContent;
             
-            // Incrementar contador
             if (!faqInteractions[questionText]) {
                 faqInteractions[questionText] = 0;
             }
             faqInteractions[questionText]++;
             
-            // Log para debugging (puedes enviar esto a analytics en producción)
             console.log('Pregunta vista:', questionText, 'Veces:', faqInteractions[questionText]);
         });
-    });
-
-    // ============================================
-    // BOTÓN "VOLVER ARRIBA" (OPCIONAL)
-    // ============================================
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-            const scrollPosition = window.scrollY;
-            const categories = document.querySelector('.categories-section');
-            
-            // Si el usuario ha scrolleado más allá de las categorías, mostrar hint
-            if (categories && scrollPosition > categories.offsetTop + categories.offsetHeight) {
-                // Aquí podrías mostrar un botón de "volver arriba" si lo deseas
-            }
-        }, 100);
     });
 
     // ============================================
@@ -195,7 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
-                    // Si es un FAQ item, abrirlo automáticamente
                     if (targetSection.classList.contains('faq-item')) {
                         targetSection.classList.add('active');
                     }
@@ -204,10 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Ejecutar al cargar la página
     highlightFAQFromHash();
-
-    // Ejecutar cuando cambie el hash
     window.addEventListener('hashchange', highlightFAQFromHash);
 
     // ============================================
@@ -230,10 +360,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCounter();
     }
 
-    // Buscar elementos con números para animar
     const counters = document.querySelectorAll('.category-count');
     counters.forEach(counter => {
-        const observer = new IntersectionObserver(function(entries) {
+        const counterObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !counter.classList.contains('animated')) {
                     counter.classList.add('animated');
@@ -245,12 +374,45 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { threshold: 0.5 });
         
-        observer.observe(counter);
+        counterObserver.observe(counter);
     });
-});
+
+    // ============================================
+    // EFECTO RIPPLE EN BOTONES
+    // ============================================
+    function addRippleEffect(button, e) {
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        button.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    }
+
+    const ctaButtons = document.querySelectorAll('.cta-button, .category-card');
+    ctaButtons.forEach(button => {
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+        
+        button.addEventListener('click', function(e) {
+            addRippleEffect(this, e);
+        });
+    });
+
+}); // FIN DEL DOMContentLoaded
 
 // ============================================
-// FUNCIONES GLOBALES
+// FUNCIONES GLOBALES (fuera del DOMContentLoaded)
 // ============================================
 
 /**
@@ -260,7 +422,6 @@ function toggleFAQ(element) {
     const faqItem = element.parentElement;
     const isActive = faqItem.classList.contains('active');
     
-    // Cerrar todos los items de la misma sección
     const section = faqItem.closest('.faq-section');
     const itemsInSection = section.querySelectorAll('.faq-item');
     
@@ -272,12 +433,10 @@ function toggleFAQ(element) {
         }
     });
     
-    // Abrir el item clickeado si no estaba activo
     if (!isActive) {
         faqItem.classList.add('active');
         element.setAttribute('aria-expanded', 'true');
         
-        // Scroll suave hacia el item expandido
         setTimeout(() => {
             const elementPosition = faqItem.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - 100;
@@ -304,7 +463,6 @@ function scrollToCategory(categoryId) {
             behavior: 'smooth'
         });
         
-        // Opcional: expandir el primer FAQ de la categoría
         setTimeout(() => {
             const firstFAQ = element.querySelector('.faq-item');
             if (firstFAQ && !firstFAQ.classList.contains('active')) {
@@ -318,76 +476,15 @@ function scrollToCategory(categoryId) {
 }
 
 /**
- * Función para filtrar por tipo (para compatibilidad con navegación)
+ * Función para filtrar por tipo (compatibilidad con navegación)
  */
 function filterByType(type) {
     console.log('Filtrar por tipo:', type);
-    // Esta función se mantiene para compatibilidad con los enlaces del menú
-    // Redirigirá a la página de adopción con el filtro correspondiente
 }
 
 // ============================================
-// UTILIDADES ADICIONALES
+// CSS DINÁMICO PARA ANIMACIONES
 // ============================================
-
-/**
- * Debounce function para optimizar eventos
- */
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-/**
- * Detectar si el usuario está en dispositivo móvil
- */
-function isMobile() {
-    return window.innerWidth <= 768;
-}
-
-/**
- * Agregar efecto de ripple a los botones
- */
-function addRippleEffect(button, e) {
-    const ripple = document.createElement('span');
-    const rect = button.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
-    
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-    ripple.classList.add('ripple');
-    
-    button.appendChild(ripple);
-    
-    setTimeout(() => {
-        ripple.remove();
-    }, 600);
-}
-
-// Aplicar efecto ripple a botones CTA
-document.addEventListener('DOMContentLoaded', function() {
-    const ctaButtons = document.querySelectorAll('.cta-button, .category-card');
-    ctaButtons.forEach(button => {
-        button.style.position = 'relative';
-        button.style.overflow = 'hidden';
-        
-        button.addEventListener('click', function(e) {
-            addRippleEffect(this, e);
-        });
-    });
-});
-
-// CSS para el efecto ripple (agregar dinámicamente)
 const style = document.createElement('style');
 style.textContent = `
     .ripple {
@@ -404,6 +501,12 @@ style.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+    
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
     }
 `;
 document.head.appendChild(style);
