@@ -4,31 +4,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (btnImpact) {
         btnImpact.addEventListener('click', function() {
-            alert('¡Gracias por tu interés! Pronto podrás ver todo nuestro impacto en detalle.');
+            window.location.href = '/Novedades.html';
         });
     }
+})
+// Toggle del menú de ayuda con click
+document.addEventListener('DOMContentLoaded', function() {
+    const helpDropdown = document.querySelector('.help-dropdown');
+    const helpButton = document.querySelector('.btn-help-circle');
+    const helpMenu = document.querySelector('.help-dropdown-menu');
 
-    // Animación adicional al hacer scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Toggle del menú al hacer click en el botón
+    helpButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        helpMenu.classList.toggle('show');
+    });
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
+    // Cerrar el menú al hacer click fuera de él
+    document.addEventListener('click', function(e) {
+        if (!helpDropdown.contains(e.target)) {
+            helpMenu.classList.remove('show');
+        }
+    });
 
-    // Observar todas las tarjetas
-    const cards = document.querySelectorAll('.help-card, .partnership-card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
+    // Prevenir que el menú se cierre al hacer click dentro de él
+    helpMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
     });
 });

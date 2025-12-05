@@ -25,6 +25,7 @@ body {
 
 /* LOGO MEJORADO */
 .logo {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -654,8 +655,7 @@ body {
     }
 }
 
-/* =============== MODAL =============== */
-
+/* =============== MODAL LOGIN =============== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -663,25 +663,25 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.55);
-    display: none;
+    display: none;                 /* Oculto por defecto */
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
 
+/* --- Caja del modal --- */
 .modal-box {
     background: white;
     width: 90%;
-    max-width: 420px;
+    max-width: 400px;
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 14px;
     position: relative;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    animation: modalFade 0.3s ease;
-    max-height: 100vh;
-    overflow-y: auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    animation: modalFade 0.25s ease;
 }
 
+/* --- Botón X (cerrar) --- */
 .modal-close {
     position: absolute;
     top: 12px;
@@ -692,7 +692,6 @@ body {
     cursor: pointer;
     color: #555;
     transition: 0.15s ease;
-    z-index: 10;
 }
 
 .modal-close:hover {
@@ -700,93 +699,34 @@ body {
     transform: scale(1.15);
 }
 
+/* --- Animación del modal --- */
 @keyframes modalFade {
     from { opacity: 0; transform: translateY(-20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
+/* --- Título WUF --- */
 .modal-title {
     text-align: center;
     font-size: 1.8rem;
-    font-weight: 800;
-    color: #264653;
-    margin-bottom: 0.25rem;
-}
-
-.modal-subtitle {
-    text-align: center;
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 1.8rem;
-}
-
-/* Formulario */
-.login-form {
-    margin-bottom: 1.5rem;
-}
-
-.form-group {
-    margin-bottom: 1.25rem;
-}
-
-.form-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #264653;
+    color: #2A9D8F;
     margin-bottom: 0.5rem;
 }
 
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-icon {
-    position: absolute;
-    left: 1rem;
-    color: #999;
-    pointer-events: none;
-}
-
-.form-input {
-    width: 100%;
-    padding: 0.875rem 1rem 0.875rem 3rem;
-    border: 2px solid #E0E0E0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: #2A9D8F;
-    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
-}
-
-.form-input::placeholder {
-    color: #999;
-}
-
-.forgot-password {
+/* --- Subtítulo --- */
+.modal-subtitle {
     display: block;
-    text-align: right;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #2A9D8F;
-    text-decoration: none;
-    font-weight: 500;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 1.5rem;
 }
 
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
-/* Botones */
+/* --- Botones de login --- */
 .modal-btn {
     width: 100%;
-    padding: 0.875rem;
+    padding: 0.75rem;
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -795,108 +735,62 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.3s ease;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+    transition: 0.25s ease;
 }
 
-.modal-btn svg {
-    flex-shrink: 0;
+.modal-btn img {
+    width: 22px;
+    height: 22px;
 }
 
-.modal-btn.primary {
-    background: #2A9D8F;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-
-.modal-btn.primary:hover {
-    background: #23877a;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
-}
-
+/* Google */
 .modal-btn.google {
     background: #ffffff;
     border: 2px solid #dadada;
-    color: #333;
 }
 
 .modal-btn.google:hover {
     background: #f4f4f4;
-    border-color: #999;
 }
 
+/* Facebook */
 .modal-btn.facebook {
-    background: #ffffff;
-    border: 2px solid #dadada;
-    color: #333;
+    background: #1877f2;
+    color: white;
 }
 
 .modal-btn.facebook:hover {
-    background: #f4f4f4;
-    border-color: #999;
+    background: #1468d4;
 }
 
-/* Separador */
-.separator {
-    position: relative;
-    text-align: center;
-    margin: 1.5rem 0;
+/* Email */
+.modal-btn.email {
+    background: #2A9D8F;
+    color: white;
 }
 
-.separator::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #E0E0E0;
+.modal-btn.email:hover {
+    background: #23877a;
 }
 
-.separator span {
-    position: relative;
-    background: white;
-    padding: 0 1rem;
-    color: #999;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-/* Texto de registro */
+/* --- Texto de registro --- */
 .modal-register {
     text-align: center;
-    margin-top: 1.5rem;
-    color: #666;
-    font-size: 0.95rem;
+    margin-top: 1rem;
+    color: #555;
 }
 
-.modal-link {
+.modal-register .modal-link {
     color: #2A9D8F;
     font-weight: 600;
+    margin-left: 4px;
     text-decoration: none;
 }
 
-.modal-link:hover {
+.modal-register .modal-link:hover {
     text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .modal-box {
-        padding: 1.5rem;
-        max-width: 95%;
-    }
-
-    .modal-title {
-        font-size: 1.5rem;
-    }
-
-    .modal-btn {
-        font-size: 0.9rem;
-        padding: 0.75rem;
-    }
 }
 
 /* =============== WHATSAPP FLOAT =============== */
@@ -926,40 +820,97 @@ body {
     transform: scale(1.1);
 }
 
-/* ================= LANDING HERO ================= */
-.landing-hero {
+/* ================= LANDING HERO CARRUSEL ================= */
+.landing-hero-carousel {
     width: 100%;
-    padding: 4rem 2rem;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    background: #FAFAF5;
+    height: 87vh;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
     animation: fadeIn 0.7s ease;
+    
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(2px);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+/* Overlay para mejor legibilidad del contenido */
+.landing-hero-carousel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* Contenido centrado */
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 2;
 }
 
 .landing-content {
-    max-width: 600px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .landing-title {
-    font-size: 2.7rem;
+    font-size: 3.2rem;
     font-weight: 800;
-    color: #264653;
+    color: white;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .landing-subtitle {
     font-size: 1.15rem;
     line-height: 1.6;
-    color: #4d5e63;
+    color: white;
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .landing-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 .landing-btn {

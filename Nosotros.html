@@ -9,39 +9,84 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="logo">
-            <div class="logo-icon">🐾</div>
-            <span>WUF</span>
-        </div>
+        <a href="/Inicio.html" class="logo">
+            <img src="https://images.unsplash.com/photo-1764738369536-c51428a2544d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Colitas Logo" class="logo-image-large">
+            <span class="logo-text">COLITAS</span>
+        </a>
         
         <nav>
             <ul class="nav-menu">
                 <li class="dropdown">
-                    <a href="/Adopta.html">Adopta ▼</a>
+                    <a href="/Adopta.html">Adopta</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">🐕 Perritos</a></li>
-                        <li><a href="#">🐱 Gatitos</a></li>
+                        <li><a href="/Adopta.html" onclick="filterByType('Perro'); return false;">Perritos</a></li>
+                        <li><a href="/Adopta.html" onclick="filterByType('Gato'); return false;">Gatitos</a></li>
                     </ul>
                 </li>
-                <li><a href="/Ayudanos.html">Ayúdanos</a></li>
-                <li><a href="#">Consultas</a></li>
-                <li><a href="#">Novedades</a></li>
                 <li><a href="#" class="active">Nosotros</a></li>
+                <li><a href="/Novedades.html">Novedades</a></li>
+                <li><a href="/preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
             </ul>
         </nav>
 
         <div class="header-buttons">
-            <button class="btn-help">❤️ AYUDA AQUÍ</button>
-            <button class="btn-login">👤 Iniciar sesión</button>
+            <!-- En el HTML, reemplaza el botón actual -->
+            <a href="/Ayudanos.html" class="btn-help">
+                <svg class="btn-help-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>AYUDA AQUÍ</span>
+                <span class="btn-help-shine"></span>
+            </a>
+            <button class="btn-login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </button>
+            <div class="help-dropdown">
+                <button class="btn-help-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </button>
+                <div class="help-dropdown-menu">
+                    <a href="/centro-ayuda.html" class="help-dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                        Centro de Ayuda
+                    </a>
+                    <a href="/contactanos.html" class="help-dropdown-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav">
+        <div class="breadcrumb-container">
+            <a href="/Inicio.html" class="breadcrumb-link">Inicio</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Nosotros</span>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Los humanos detrás de <span class="brand-badge">🐾 WUF</span></h1>
+            <h1 class="hero-title">Los humanos detrás de <span class="brand-badge">🐾 COLITAS</span></h1>
             <div class="hero-image-container">
-                <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=600&fit=crop" alt="Equipo Wuf" class="hero-image">
+                <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&h=600&fit=crop" alt="Equipo Colitas" class="hero-image">
             </div>
         </div>
     </section>
@@ -51,7 +96,7 @@
         <div class="container">
             <h2 class="section-title">Conoce más sobre nosotros</h2>
             <p class="about-description">
-                Wuf es una ONG Peruana que ayuda a 7 albergues afiliados y 21 casos sociales independientes ubicados en Lima y provincia.
+                Colitas es una ONG Peruana que ayuda a 7 albergues afiliados y 21 casos sociales independientes ubicados en Lima y provincia.
             </p>
             <button class="btn-impact">Mira todo el impacto aquí</button>
             
@@ -60,58 +105,63 @@
                     Nos encargamos de proveer donaciones de comida, medicinas, mejoras de infraestructura a los albergues, campañas de vacunación, brindar atenciones veterinarias, etc.
                 </p>
                 <p class="impact-text">
-                    En la actualidad impactamos mensualmente en la vida de <strong>+ 750 Wufs y Miaus</strong> sin hogar.
+                    En la actualidad impactamos mensualmente en la vida de <strong>+ 750 peluditos</strong> sin hogar.
                 </p>
             </div>
         </div>
     </section>
 
    <!-- Team Section -->
-<section class="team-section">
-    <div class="container">
-        <h2 class="section-title-white">Nuestro Equipo</h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1644675272883-0c4d582528d8?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Martínes Gonzáles" class="team-image">
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title-white">Nuestro Equipo</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1644675272883-0c4d582528d8?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Martínes Gonzáles" class="team-image">
+                    </div>
+                    <h3 class="team-name">Martínes Gonzáles</h3>
+                    <p class="team-role">Fundador</p>
                 </div>
-                <h3 class="team-name">Martínes Gonzáles</h3>
-                <p class="team-role">Fundador</p>
-            </div>
 
-            <div class="team-card">
-                <div class="team-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1616529576501-266eea50d716?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Yoel Fernández" class="team-image">
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1616529576501-266eea50d716?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Yoel Fernández" class="team-image">
+                    </div>
+                    <h3 class="team-name">Yoel Fernández</h3>
+                    <p class="team-role">Fundador</p>
                 </div>
-                <h3 class="team-name">Yoel Fernández</h3>
-                <p class="team-role">Fundador</p>
-            </div>
 
-            <div class="team-card">
-                <div class="team-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1618294454352-eb84462415b0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Claudia Ramírez" class="team-image">
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618294454352-eb84462415b0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Claudia Ramírez" class="team-image">
+                    </div>
+                    <h3 class="team-name">Claudia Ramírez</h3>
+                    <p class="team-role">Fundadora</p>
                 </div>
-                <h3 class="team-name">Claudia Ramírez</h3>
-                <p class="team-role">Fundadora</p>
-            </div>
 
-            <div class="team-card">
-                <div class="team-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1633872255132-af26d4b478d3?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sebastián Torres" class="team-image">
+                <div class="team-card">
+                    <div class="team-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1633872255132-af26d4b478d3?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sebastián Torres" class="team-image">
+                    </div>
+                    <h3 class="team-name">Sebastián Torres</h3>
+                    <p class="team-role">Fundador</p>
                 </div>
-                <h3 class="team-name">Sebastián Torres</h3>
-                <p class="team-role">Fundador</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- Help Methods Section -->
     <section class="help-section">
         <div class="container">
             <h2 class="section-title">¿Cómo ayudamos?</h2>
             <div class="help-grid">
                 <div class="help-card">
-                    <div class="help-icon">❤️</div>
+                    <div class="help-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
                     <h3 class="help-title">Rescate</h3>
                     <p class="help-description">
                         Rescatamos mascotas en situación de abandono o maltrato, brindándoles atención inmediata y un lugar seguro.
@@ -119,7 +169,11 @@
                 </div>
 
                 <div class="help-card">
-                    <div class="help-icon">🏥</div>
+                    <div class="help-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
                     <h3 class="help-title">Rehabilitación</h3>
                     <p class="help-description">
                         Cada mascota recibe atención veterinaria completa, tratamiento médico y amor para recuperarse física y emocionalmente.
@@ -127,7 +181,12 @@
                 </div>
 
                 <div class="help-card">
-                    <div class="help-icon">🏠</div>
+                    <div class="help-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
                     <h3 class="help-title">Adopción</h3>
                     <p class="help-description">
                         Conectamos a cada mascota con familias responsables que les brindarán un hogar lleno de amor para siempre.
@@ -147,19 +206,26 @@
                 <div class="partnership-card">
                     <div class="partnership-header">
                         <div class="partnership-icon-wrapper">
-                            <div class="partnership-icon">✉️</div>
+                            <div class="partnership-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
                         </div>
                         <h3 class="partnership-title">Alianza de Ayuda</h3>
                     </div>
                     <div class="partnership-content">
                         <p class="partnership-description">
-                            Si deseas formar parte de las empresas con propósito que deseen donar productos de primera necesidad, iniciar campañas de vacunación y brindar atenciones veterinarias para Wufs y Miaus.
+                            Si deseas formar parte de las empresas con propósito que deseen donar productos de primera necesidad, iniciar campañas de vacunación y brindar atenciones veterinarias para nuestros peluditos.
                         </p>
                         <p class="partnership-cta">
-                            <strong>¡Únete a una alianza de ayuda con Wuf!</strong>
+                            <strong>¡Únete a una alianza de ayuda con Colitas!</strong>
                         </p>
                         <p class="partnership-contact">
-                            Envía un correo a <a href="mailto:equipo@wuf.pe">equipo@wuf.pe</a>
+                            Envía un correo a <a href="mailto:equipo@colitas.pe">equipo@colitas.pe</a>
                         </p>
                     </div>
                 </div>
@@ -168,19 +234,25 @@
                 <div class="partnership-card">
                     <div class="partnership-header">
                         <div class="partnership-icon-wrapper">
-                            <div class="partnership-icon">✉️</div>
+                            <div class="partnership-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
                         </div>
                         <h3 class="partnership-title">Alianza Comercial</h3>
                     </div>
                     <div class="partnership-content">
                         <p class="partnership-description">
-                            Si deseas ser patrocinador, partner solidario (impulsando las iniciativas de ayuda) o deseas generar productos solidarios en colaboración con Wuf, no dudes en contactarte y ser parte de este gran impacto.
+                            Si deseas ser patrocinador, partner solidario (impulsando las iniciativas de ayuda) o deseas generar productos solidarios en colaboración con Colitas, no dudes en contactarte y ser parte de este gran impacto.
                         </p>
                         <p class="partnership-cta">
-                            <strong>¡Únete a una alianza comercial con Wuf!</strong>
+                            <strong>¡Únete a una alianza comercial con Colitas!</strong>
                         </p>
                         <p class="partnership-contact">
-                            Envía un correo a <a href="mailto:valeria@wuf.pe">valeria@wuf.pe</a>
+                            Envía un correo a <a href="mailto:valeria@colitas.pe">alvaro@colitas.pe</a>
                         </p>
                     </div>
                 </div>
@@ -189,19 +261,24 @@
                 <div class="partnership-card">
                     <div class="partnership-header">
                         <div class="partnership-icon-wrapper">
-                            <div class="partnership-icon">✉️</div>
+                            <div class="partnership-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                </svg>
+                            </div>
                         </div>
                         <h3 class="partnership-title">Alianza de Marketing</h3>
                     </div>
                     <div class="partnership-content">
                         <p class="partnership-description">
-                            Si deseas contar con Wuf en tu evento, producir material audiovisual, merchandising, banners, toldos y/u otros productos brandeados, ¡únete a una alianza de marketing con Wuf!
+                            Si deseas contar con Colitas en tu evento, producir material audiovisual, merchandising, banners, toldos y/u otros productos brandeados, ¡únete a una alianza de marketing con Colitas!
                         </p>
                         <p class="partnership-cta">
-                            <strong>¡Únete a una alianza de marketing con Wuf!</strong>
+                            <strong>¡Únete a una alianza de marketing con Colitas!</strong>
                         </p>
                         <p class="partnership-contact">
-                            Envía un correo a <a href="mailto:marketing@wuf.pe">marketing@wuf.pe</a>
+                            Envía un correo a <a href="mailto:marketing@colitas.pe">marketing@colitas.pe</a>
                         </p>
                     </div>
                 </div>
@@ -209,19 +286,160 @@
         </div>
     </section>
 
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <h2 class="section-title">Encuéntranos</h2>
+            <p class="location-subtitle">Visítanos y conoce de cerca nuestro trabajo con los peluditos</p>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="location-details">
+                            <h3>Dirección</h3>
+                            <p>Av. Ejemplo 123, San Isidro<br>Lima, Perú</p>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="location-details">
+                            <h3>Horario de Atención</h3>
+                            <p>Lunes a Viernes: 9:00 AM - 8:00 PM<br>Sábados: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="location-details">
+                            <h3>Teléfono</h3>
+                            <p>+51 930 213 687<br>Llámanos para más información</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.3366164629384!2d-77.05105782493294!3d-12.091749888143753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9b4c2e0b5b5%3A0x4e8e1b8e1b8e1b8e!2sSan%20Isidro%2C%20Lima!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>  
+
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2 class="cta-title">Súmate a la ayuda, difunde para que los Wufs puedan encontrar su hogar.</h2>
+            <h2 class="cta-title">Súmate a la ayuda, difunde para que nuestros peluditos puedan encontrar su hogar.</h2>
             <p class="cta-text">
-                Escríbenos a <a href="mailto:equipo@wuf.pe" class="cta-link">equipo@wuf.pe</a>
+                Escríbenos a <a href="mailto:equipo@colitas.pe" class="cta-link">equipo@colitas.pe</a>
             </p>
         </div>
     </section>  
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>Ayudamos a encontrar hogares amorosos para mascotas que necesitan una segunda oportunidad.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="/Adopta.html">Adopta</a></li>
+                    <li><a href="/Ayudanos.html">Ayúdanos</a></li>
+                    <li><a href="/Nosotros.html">Nosotros</a></li>
+                    <li><a href="#">Novedades</a></li>
+                    <li><a href="/preguntas-frecuentes.html">Preguntas Frecuentes</a></li>
+                    <li><a href="/contactanos.html">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        colitas@gmail.com.pe
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        +51 930 213 687
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Lima, Perú
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Colitas - Sistema de Adopción de Mascotas. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <script src="/Js/nosotros.js"></script>
