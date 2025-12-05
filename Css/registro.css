@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #264653;
+    position: relative;
+    filter: blur(0);
+    transition: background-image 1s ease-in-out;
+}
+
+/* Overlay oscuro para mejorar legibilidad */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 0;
+}
+
+/* Botón Volver */
+.btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    text-decoration: none;
+}
+
+.btn-back svg {
+    color: #2A9D8F;
+}
+
+.btn-back:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(42, 157, 143, 0.3);
+}
+
+.btn-back:hover svg {
+    color: #23877a;
+}
+
+/* Contenedor principal */
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Caja del formulario */
+.register-box {
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Header con icono */
+.register-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.register-icon {
+    color: #2A9D8F;
+    flex-shrink: 0;
+}
+
+.register-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #264653;
+    margin: 0;
+}
+
+/* Formulario */
+.register-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: #999;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #2A9D8F;
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+/* Estilo especial para input de fecha */
+.form-input[type="date"] {
+    color: #264653;
+}
+
+.form-input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: opacity(0.6);
+}
+
+.form-input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: opacity(1);
+}
+
+/* Botón Registrarse */
+.btn-register {
+    width: 100%;
+    padding: 0.875rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    background: #2A9D8F;
+    color: white;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #23877a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
+}
+
+/* Footer con enlace a login */
+.register-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.register-link {
+    color: #2A9D8F;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .register-box {
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+    }
+
+    .register-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-register {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+}
