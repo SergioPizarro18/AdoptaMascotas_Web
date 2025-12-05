@@ -966,7 +966,8 @@ body {
     transform: translateY(-2px);
 }
 
-/* ===== MODAL LOGIN ===== */
+/* =============== MODAL LOGIN =============== */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -989,10 +990,11 @@ body {
     position: relative;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     animation: modalFade 0.3s ease;
-    max-height: 90vh;
+    max-height: 95vh;
     overflow-y: auto;
 }
 
+/* Botón de cerrar modal de login */
 .modal-close {
     position: absolute;
     top: 12px;
@@ -1004,12 +1006,20 @@ body {
     color: #555;
     transition: 0.15s ease;
     z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
 }
 
 .modal-close:hover {
-    color: #000;
-    transform: scale(1.15);
+    color: #264653;
+    background: #f0f0f0;
+    transform: scale(1.1);
 }
+
 
 @keyframes modalFade {
     from { opacity: 0; transform: translateY(-20px); }
@@ -1031,21 +1041,115 @@ body {
     margin-bottom: 1.8rem;
 }
 
+/* Formulario */
 .login-form {
     margin-bottom: 1.5rem;
 }
 
-.input-wrapper {
+.login-form .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.login-form .form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #264653;
+    margin-bottom: 0.5rem;
+}
+
+.login-form .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.input-icon {
+.login-form .input-icon {
     position: absolute;
     left: 1rem;
     color: #999;
     pointer-events: none;
+    z-index: 1;
+}
+
+.login-form .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+}
+
+/* Input de contraseña con espacio para el botón de ojo */
+.login-form .form-input.password-field {
+    padding-right: 3.5rem;
+}
+
+.login-form .form-input:focus {
+    outline: none;
+    border-color: #2A9D8F;
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+}
+
+.login-form .form-input::placeholder {
+    color: #999;
+}
+
+/* Botón para mostrar/ocultar contraseña en login */
+.login-form .toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 0.5rem;
+    z-index: 10;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form .toggle-password:hover {
+    color: #2A9D8F;
+}
+
+.login-form .toggle-password svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+/* Mensajes de error */
+.login-form .error-message {
+    display: none;
+    color: #E63946;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+    line-height: 1.4;
+}
+
+.login-form .error-message.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .forgot-password {
@@ -1062,6 +1166,7 @@ body {
     text-decoration: underline;
 }
 
+/* Botones */
 .modal-btn {
     width: 100%;
     padding: 0.875rem;
@@ -1116,6 +1221,7 @@ body {
     border-color: #999;
 }
 
+/* Separador */
 .separator {
     position: relative;
     text-align: center;
@@ -1141,6 +1247,7 @@ body {
     font-weight: 500;
 }
 
+/* Texto de registro */
 .modal-register {
     text-align: center;
     margin-top: 1.5rem;
@@ -1157,6 +1264,28 @@ body {
 .modal-link:hover {
     text-decoration: underline;
 }
+
+/* Responsive */
+@media (max-width: 480px) {
+    .modal-box {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+    
+    .login-form .form-input {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}
+
 
 /* ===== FOOTER ===== */
 .footer {

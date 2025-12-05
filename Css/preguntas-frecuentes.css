@@ -350,7 +350,7 @@ body {
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #3d5a5c 0%, #2A9D8F 50%, #3d5a5c 100%);
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 6rem; /* Aumenté el padding inferior */
     text-align: center;
 }
 
@@ -365,16 +365,16 @@ body {
     font-size: 1.3rem;
     color: rgba(255, 255, 255, 0.9);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 2rem; /* Agregué margen inferior */
     line-height: 1.6;
 }
 
-/* Search Section */
+/* Search Section - AHORA DENTRO DEL HERO */
 .search-section {
     background-color: transparent;
-    padding: 2rem;
+    padding: 0 2rem; /* Removí el padding superior e inferior */
     max-width: 900px;
-    margin: -3rem auto 0;
+    margin: 0 auto; /* Removí el margin-top negativo */
     position: relative;
     z-index: 10;
 }
@@ -392,8 +392,8 @@ body {
 }
 
 .search-container:focus-within {
-    border-color: #2A9D8F;
-    box-shadow: 0 12px 40px rgba(42, 157, 143, 0.25);
+    border-color: white;
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
 
@@ -421,7 +421,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .section-title {
     text-align: center;
     font-size: 2.5rem;

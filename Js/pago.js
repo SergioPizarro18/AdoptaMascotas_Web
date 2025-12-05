@@ -50,23 +50,156 @@ document.addEventListener('DOMContentLoaded', function() {
 function setupLoginModal() {
     const loginBtn = document.querySelector(".btn-login");
     const modal = document.getElementById("loginModal");
-    const closeBtn = document.querySelector(".modal-close");
+    const closeBtn = document.querySelector("#loginModal .modal-close");
+    const loginForm = document.getElementById("loginForm");
+    const loginUsuario = document.getElementById("loginUsuario");
+    const loginPassword = document.getElementById("loginPassword");
+    const loginUsuarioError = document.getElementById("loginUsuarioError");
+    const loginPasswordError = document.getElementById("loginPasswordError");
 
+    // Verificar que los elementos existen antes de asignar eventos
     if (loginBtn && modal && closeBtn) {
         // Abrir modal
-        loginBtn.addEventListener("click", () => {
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
             modal.style.display = "flex";
         });
 
         // Cerrar modal con X
-        closeBtn.addEventListener("click", () => {
+        closeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             modal.style.display = "none";
+            // Limpiar validaciones al cerrar
+            if (loginUsuario) loginUsuario.style.borderColor = '#E0E0E0';
+            if (loginPassword) loginPassword.style.borderColor = '#E0E0E0';
+            if (loginUsuarioError) loginUsuarioError.classList.remove('show');
+            if (loginPasswordError) loginPasswordError.classList.remove('show');
         });
 
-        // Cerrar modal haciendo clic en el fondo
+        // Cerrar modal haciendo clic en el fondo sombreado
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.style.display = "none";
+                // Limpiar validaciones al cerrar
+                if (loginUsuario) loginUsuario.style.borderColor = '#E0E0E0';
+                if (loginPassword) loginPassword.style.borderColor = '#E0E0E0';
+                if (loginUsuarioError) loginUsuarioError.classList.remove('show');
+                if (loginPasswordError) loginPasswordError.classList.remove('show');
+            }
+        });
+    }
+
+    // Validación de usuario
+    if (loginUsuario && loginUsuarioError) {
+        loginUsuario.addEventListener('input', function() {
+            const value = this.value.trim();
+            
+            if (value.length === 0) {
+                this.style.borderColor = '#E0E0E0';
+                loginUsuarioError.classList.remove('show');
+            } else if (value.length < 3) {
+                this.style.borderColor = '#E63946';
+                loginUsuarioError.textContent = 'El usuario debe tener al menos 3 caracteres.';
+                loginUsuarioError.classList.add('show');
+            } else {
+                this.style.borderColor = '#2A9D8F';
+                loginUsuarioError.classList.remove('show');
+            }
+        });
+    }
+
+    // Validación de contraseña
+    if (loginPassword && loginPasswordError) {
+        const passwordWrapper = loginPassword.closest('.input-wrapper');
+        
+        if (passwordWrapper && !passwordWrapper.querySelector('.toggle-password')) {
+            const toggleButton = document.createElement('button');
+            toggleButton.type = 'button';
+            toggleButton.className = 'toggle-password';
+            toggleButton.setAttribute('aria-label', 'Mostrar contraseña');
+            toggleButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            `;
+            
+            passwordWrapper.appendChild(toggleButton);
+
+            toggleButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const type = loginPassword.type === 'password' ? 'text' : 'password';
+                loginPassword.type = type;
+                
+                if (type === 'text') {
+                    this.setAttribute('aria-label', 'Ocultar contraseña');
+                    this.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    `;
+                } else {
+                    this.setAttribute('aria-label', 'Mostrar contraseña');
+                    this.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    `;
+                }
+            });
+        }
+
+        loginPassword.addEventListener('input', function() {
+            const value = this.value;
+            
+            if (value.length === 0) {
+                this.style.borderColor = '#E0E0E0';
+                loginPasswordError.classList.remove('show');
+            } else if (value.length < 6) {
+                this.style.borderColor = '#E63946';
+                loginPasswordError.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                loginPasswordError.classList.add('show');
+            } else {
+                this.style.borderColor = '#2A9D8F';
+                loginPasswordError.classList.remove('show');
+            }
+        });
+    }
+
+    // Manejar envío del formulario
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const usuario = loginUsuario.value.trim();
+            const password = loginPassword.value;
+            
+            let isValid = true;
+            
+            if (usuario.length < 3) {
+                loginUsuario.style.borderColor = '#E63946';
+                loginUsuarioError.textContent = 'El usuario debe tener al menos 3 caracteres.';
+                loginUsuarioError.classList.add('show');
+                isValid = false;
+            }
+            
+            if (password.length < 6) {
+                loginPassword.style.borderColor = '#E63946';
+                loginPasswordError.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                loginPasswordError.classList.add('show');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                console.log('Login exitoso:', { usuario, password: '***' });
+                alert('¡Inicio de sesión exitoso! Bienvenido ' + usuario);
+                modal.style.display = 'none';
+                loginForm.reset();
+                loginUsuario.style.borderColor = '#E0E0E0';
+                loginPassword.style.borderColor = '#E0E0E0';
             }
         });
     }

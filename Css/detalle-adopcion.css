@@ -205,6 +205,84 @@ body {
     transform: translateY(-2px);
 }
 
+/* Help Dropdown Button */
+.help-dropdown {
+    position: relative;
+}
+
+.btn-help-circle {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-help-circle:hover {
+    background-color: white;
+    color: #2A9D8F;
+    transform: translateY(-2px);
+}
+
+.btn-help-circle svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-help-circle:hover svg {
+    transform: rotate(15deg);
+}
+
+.help-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 0.75rem 0;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.help-dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.help-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    color: #264653;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.help-dropdown-item:hover {
+    background-color: #e8f5f3;
+    color: #2A9D8F;
+}
+
+.help-dropdown-item svg {
+    flex-shrink: 0;
+}
+
+
 /* Breadcrumb */
 .breadcrumb-nav {
     background-color: #FAFAF5;
